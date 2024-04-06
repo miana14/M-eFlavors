@@ -17,9 +17,6 @@ function connexionPDO() {
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     // prog de test
     header('Content-Type:text/plain');
- 
-    echo "connexionPDO() : \n";
-    print_r(connexionPDO());
 }
 
 ?>

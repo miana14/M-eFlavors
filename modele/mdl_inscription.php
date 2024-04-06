@@ -57,7 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             echo "Inscription réussie !";
-            session_start();
+            if(!isset($_SESSION)){
+                session_start(); 
+           }
             exit();
         } else {
             echo "Erreur : " . $sql . "<br>" . $stmt->errorInfo()[2];

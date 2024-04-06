@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-<?php require_once './modele/mdl_connexion.php';
+<?php 
+require_once './modele/mdl_connexion.php';
 include ('vueHead.php'); ?>
 
 <body>
     <header>
-        <!-- =========================================== MOBILE ============================================ -->
-        <nav id="mobile">
-            
+        <nav>
             <ul class="navigation" role="navigation">
                 <div class="container">
                     <div>
@@ -30,6 +29,7 @@ include ('vueHead.php'); ?>
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $email = $_POST['email'];
                         $mdp = $_POST['mdp'];
+                        
                     } else {
                         // Par défaut, initialiser les variables à vide pour éviter les erreurs
                         $email = "";
@@ -38,10 +38,14 @@ include ('vueHead.php'); ?>
 
                     // Afficher le menu utilisateur
                     echo '<ul id="user-menu">';
-                    if (connexionUser($email, $mdp)) {
+                    if(!isset($_SESSION)){
+                        session_start(); 
+                   }
+                    if (isset($_SESSION['email_user']) == true) {
                         // Si l'utilisateur est connecté, afficher les liens de profil et de déconnexion
                         echo '<li><a href="./?action=profil">Mon Profil</a></li>';
                         echo '<li><a href="./?action=deconnexion">Déconnexion</a></li>';
+                        
                     } else {
                         // Si l'utilisateur n'est pas connecté, afficher les liens de connexion et d'inscription
                         echo '<li class="hide-on-start"><a href="./?action=connexion">Connexion</a></li>';

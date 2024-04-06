@@ -4,7 +4,7 @@
 <div id="banniereCI">
     <article class="form-card" id="inscription">
         <h2>Inscription</h2>
-        <form action="./modele/mdl_inscription.php" method="POST" class="form">
+        <form action="./?action=inscription" method="POST" class="form">
             <br>
             <label for="email">Adresse-mail *</label><br>
             <input type="email" id="email" name="email" placeholder="<?php ?>" required>

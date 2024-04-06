@@ -3,6 +3,7 @@ require_once "bdd.php";
 
 // Fonction pour connecter l'utilisateur
 function connexionUser($email, $mdp) {
+    
     try {
         $conn = connexionPDO();
 
@@ -19,8 +20,12 @@ function connexionUser($email, $mdp) {
             $mot_de_passe_hache = $row['mdp_'];
 
             if (password_verify($mdp, $mot_de_passe_hache)) {
-                session_start();
+                if(!isset($_SESSION)){
+                    session_start(); 
+               }
+                $_SESSION['email_user'] = $_POST['email'];
                 return "Le mot de passe est valide !";
+                
             } else {
                 return "Mot de passe incorrect.";
             }
@@ -36,12 +41,12 @@ function connexionUser($email, $mdp) {
     }
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $mdp = $_POST['mdp'];
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $email = $_POST['email'];
+//     $mdp = $_POST['mdp'];
 
-    // Appeler la fonction pour connecter l'utilisateur
-    $message = connexionUser($email, $mdp);
-    echo $message;
-}
+//     // Appeler la fonction pour connecter l'utilisateur
+//     $message = connexionUser($email, $mdp);
+//     echo $message;
+// }
 ?>

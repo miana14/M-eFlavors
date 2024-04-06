@@ -2,7 +2,7 @@
 
 require dirname(__FILE__) . "/controleur/config.php";
 require RACINE . "/controleur/route.php";
-// require_once RACINE . "/controleur/connexion.php"; // pour pouvoir utiliser isLoggedOn()
+//require_once RACINE . "/controleur/connexion.php"; // pour pouvoir utiliser isLoggedOn()
 
 
 if (isset ($_GET["action"])) {

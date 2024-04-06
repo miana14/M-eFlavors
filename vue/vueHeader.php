@@ -13,7 +13,7 @@ include ('vueHead.php');
                     <div>
                         <i class="fa-solid fa-bars" id="burger-menu" style="color: #d9b88f;" onclick="burger()"></i>
                     </div>
-                    <div id="list-items">
+                    <div class="menu" id="list-items">
                         <li><a href="./?action=presentation">Présentation</a></li>
                         <li><a href="./?action=recettes">Nos Recettes</a></li>
                         <li><a href="./?action=forum">Forum</a></li>
@@ -38,10 +38,14 @@ include ('vueHead.php');
 
                     // Afficher le menu utilisateur
                     echo '<ul id="user-menu">';
-                    if (connexionUser($email, $mdp)) {
+                    if(!isset($_SESSION)){
+                        session_start(); 
+                   }
+                    if (isset($_SESSION['email_user']) == true) {
                         // Si l'utilisateur est connecté, afficher les liens de profil et de déconnexion
                         echo '<li><a href="./?action=profil">Mon Profil</a></li>';
                         echo '<li><a href="./?action=deconnexion">Déconnexion</a></li>';
+                        
                     } else {
                         // Si l'utilisateur n'est pas connecté, afficher les liens de connexion et d'inscription
                         echo '<li class="hide-on-start"><a href="./?action=connexion">Connexion</a></li>';

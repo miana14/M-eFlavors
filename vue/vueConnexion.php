@@ -4,10 +4,8 @@
 <div id="banniereCI">
     <article class="form-card">
         <h2>Connexion</h2>
-        <?php //if(isset($_GET['erreur']) && $_GET['erreur'] == 1): ?>
-        <!-- <p style="color: red;">Identifiants incorrects. Veuillez réessayer.</p> -->
-    <?php //endif; ?>
-        <form action="./modele/mdl_connexion.php" method="POST" class="form">
+        <?php require './vue/vueMessageErreur.php'?>
+        <form action="./?action=connexion" method="POST" class="form">
             <br>
             <label for="email">Adresse-Mail </label><br>
             <input type="email" id="email" name="email">
