@@ -17,6 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = connexionUser($email,$mdp);
 
     if ($result == "Le mot de passe est valide !") { 
+        if(!isset($_SESSION)){
+            session_start(); 
+       }
+        $_SESSION['email_user'] = $_POST['email'];
         header("Location: ./?action=default");
         // Redirection vers la page d'accueil si la connexion réussit
     } else {

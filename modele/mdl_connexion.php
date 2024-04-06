@@ -20,10 +20,7 @@ function connexionUser($email, $mdp) {
             $mot_de_passe_hache = $row['mdp_'];
 
             if (password_verify($mdp, $mot_de_passe_hache)) {
-                if(!isset($_SESSION)){
-                    session_start(); 
-               }
-                $_SESSION['email_user'] = $_POST['email'];
+
                 return "Le mot de passe est valide !";
                 
             } else {

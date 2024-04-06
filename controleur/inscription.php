@@ -7,3 +7,5 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 ?>
 
 <?php include './vue/vueInscription.php'; ?>
+
+<?php require './modele/mdl_inscription.php'; ?>

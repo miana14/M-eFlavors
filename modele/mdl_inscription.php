@@ -56,9 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':mdp', $mdp_hache);
 
         if ($stmt->execute()) {
-            echo "Inscription réussie !";
+            // echo "Inscription réussie !";
             if(!isset($_SESSION)){
-                session_start(); 
+                session_start();
            }
             exit();
         } else {
