@@ -19,8 +19,9 @@ function connexionPDO() {
         $conn = new PDO("mysql:host=$serveur;dbname=$bd", $login, $mdp, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
-    } catch (PDOException $e) {
-        die("Erreur de connexion PDO :". $e->getMessage());
+    } catch (PDOException $e){
+        // le throw permet de remonter l'erreur à l'appelant tout en évitant que tout le serveur s'arrête contrairement au return
+         throw $e;
     }
 }
 

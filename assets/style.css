@@ -94,20 +94,155 @@ nav {
   background: #261201;
 }
 
-/* ========================================= HEADER ================================================ */
+/* ========================================= BURGER ================================================ */
+#burger,
+#burger-user {
+  cursor: pointer;
+  height: 27px;
+  width: 27px;
+  margin: 50px;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+#burger span,
+#burger span:before,
+#burger span:after,
+#burger-user span,
+#burger-user span:before,
+#burger-user span:after {
+  background: #D9B88F;
+  display: block;
+  height: 2px;
+  opacity: 1;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+}
+
+/* ========================== */
+#burger span:before,
+#burger span:after,
+#burger-user span:before,
+#burger-user span:after {
+  content: "";
+}
+
+#burger span,
+#burger-user span {
+  right: 0px;
+  top: 13px;
+  width: 27px;
+}
+
+#burger span:before,
+#burger-user span:before {
+  left: 0px;
+  top: -10px;
+  width: 27px;
+}
+
+#burger span:after,
+#burger-user span:after {
+  left: 0px;
+  top: 10px;
+  width: 27px;
+}
+
+/* ======================== */
+#burger.close span,
+#burger-user.close span {
+  transform: rotate(-45deg);
+  top: 13px;
+  width: 27px;
+}
+
+#burger.close span:before,
+#burger-user.close span:before {
+  top: 0px;
+  transform: rotate(90deg);
+  width: 27px;
+}
+
+#burger.close span:after,
+#burger-user.close span:after {
+  top: 0px;
+  left: 0;
+  transform: rotate(90deg);
+  opacity: 0;
+  width: 0;
+}
+
+/* ======= fin du style des burgers et de leurs transitions ======*/
+#menu-burger,
+#menu-user {
+  z-index: 1;
+  min-width: 20%;
+  min-height: 10%;
+  position: absolute;
+  top: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  padding-top: 200px;
+  transition: all 0.3s ease;
+}
+
+#menu-burger ul,
+#menu-user ul {
+  margin: -150px;
+}
+
+#menu-burger.overlay {
+  visibility: visible;
+  opacity: 1;
+  padding-bottom: 0px;
+  background: #324001;
+  margin-top: 200px;
+  border: solid 2px #261201;
+  min-width: 150px;
+  left: 0;
+}
+
+#menu-user.overlay {
+  visibility: visible;
+  opacity: 1;
+  padding-bottom: 0px;
+  background: #324001;
+  margin-top: 200px;
+  border: solid 2px #261201;
+  min-width: 150px;
+  right: 0;
+}
+
+#menu-burger li,
+#menu-user li {
+  list-style: none;
+}
+
+#menu-burger a,
+#menu-user a {
+  color: #D9B88F;
+  display: block;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
 .navigation {
   min-height: 200px;
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
 .navigation img {
   margin-left: 20px;
-  width: 70%;
+  max-width: 70%;
+  min-width: 75px;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -123,50 +258,47 @@ nav {
   background-position: center;
 }
 
-.navigation #user-icon,
-#burger-menu {
-  font-size: 40px;
-}
-
-.navigation {
-  overflow: hidden;
-  position: relative;
-}
-
-.navigation #list-items,
-#user-menu {
-  display: none;
-}
-
-.navigation a {
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-  color: #D9B88F;
-}
-
-.navigation a.icon {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.navigation ul li a:hover,
-.navigation #list-items li a:hover {
-  background-color: #636C45;
-  color: #D9B88F;
-}
-
 .container {
   display: flex;
   align-items: center;
-  width: 60%;
   justify-content: space-around;
 }
 
-/* ==================================================================================== */
+@media screen and (min-width: 1135px) {
+  .navigation img {
+    margin-left: 0;
+  }
+  .navigation #burger,
+  #burger-user {
+    display: none;
+  }
+  #menu-burger,
+  #menu-user {
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 0;
+  }
+  #menu-burger li a,
+  #menu-user li a {
+    color: #D9B88F;
+  }
+  #menu-burger ul,
+  #menu-user ul {
+    display: flex;
+    justify-content: space-around;
+  }
+  #menu-burger {
+    width: 450px;
+  }
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+}
 /* =========================================  HEADER C&I  ====================================== */
 #banniereCI {
   width: 100%;
@@ -375,25 +507,6 @@ footer {
 }
 
 /* ===================================== MEDIA QUERIES ============================================ */
-@media screen and (min-width: 1135px) {
-  .navigation #list-items {
-    display: block;
-    display: flex;
-  }
-  #user-menu {
-    display: block;
-    display: flex;
-  }
-  .navigation #burger-menu,
-  #user-icon {
-    display: none;
-  }
-  .container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-  }
-}
 .breadcrumb {
   list-style: none;
   padding: 10px;

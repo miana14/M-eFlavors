@@ -1,9 +1,10 @@
 <?php
-require_once "bdd.php"; 
+require_once "bdd.php";
 
 // Fonction pour connecter l'utilisateur
-function connexionUser($email, $mdp) {
-    
+function connexionUser($email, $mdp)
+{
+
     try {
         $conn = connexionPDO();
 
@@ -22,7 +23,7 @@ function connexionUser($email, $mdp) {
             if (password_verify($mdp, $mot_de_passe_hache)) {
 
                 return "Le mot de passe est valide !";
-                
+
             } else {
                 return "Mot de passe incorrect.";
             }
@@ -30,20 +31,11 @@ function connexionUser($email, $mdp) {
             return "Identifiant incorrect.";
         }
     } catch (PDOException $e) {
-        return "Erreur : " . $e->getMessage();
+        return "Erreur de connexion à la base de données, veuillez contacter le service client";
     } finally {
         if (isset($conn)) {
             $conn = null;
         }
     }
 }
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $email = $_POST['email'];
-//     $mdp = $_POST['mdp'];
-
-//     // Appeler la fonction pour connecter l'utilisateur
-//     $message = connexionUser($email, $mdp);
-//     echo $message;
-// }
 ?>
