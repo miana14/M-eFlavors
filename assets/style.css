@@ -94,7 +94,61 @@ nav {
   background: #261201;
 }
 
-/* ========================================= BURGER ================================================ */
+/* ================================================  HEADER C&I  =============================================== */
+#banniereCI {
+  width: 100%;
+  height: 90%;
+  position: relative;
+  background-image: url("img/banniere.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ====================================================  HEADER  ===================================================== */
+#banniere {
+  width: 100%;
+  height: 40%;
+  background-image: url("img/banniere.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ================================================ FIL D'ARIANE ================================================ */
+.breadcrumb {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  background-color: #D9B88F;
+  border-radius: 4px;
+  display: flex;
+}
+
+.breadcrumb li {
+  display: inline;
+  margin-right: 5px;
+}
+
+.breadcrumb li:last-child {
+  font-weight: bold;
+}
+
+.breadcrumb li::after {
+  content: ">";
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #323232;
+}
+
+.breadcrumb li:last-child::after {
+  content: none;
+}
+
+.breadcrumb a {
+  color: #323232;
+}
+
+/* ================================================ BURGER ================================================ */
 #burger,
 #burger-user {
   cursor: pointer;
@@ -173,7 +227,8 @@ nav {
   width: 0;
 }
 
-/* ======= fin du style des burgers et de leurs transitions ======*/
+/* ======= fin du style des burgers et de leurs transitions =======*/
+/* ============== style pour les menus des burgers ================*/
 #menu-burger,
 #menu-user {
   z-index: 1;
@@ -199,7 +254,7 @@ nav {
   opacity: 1;
   padding-bottom: 0px;
   background: #324001;
-  margin-top: 200px;
+  margin-top: 150px;
   border: solid 2px #261201;
   min-width: 150px;
   left: 0;
@@ -209,8 +264,9 @@ nav {
   visibility: visible;
   opacity: 1;
   padding-bottom: 0px;
+  padding-top: 0px;
   background: #324001;
-  margin-top: 200px;
+  margin-top: 150px;
   border: solid 2px #261201;
   min-width: 150px;
   right: 0;
@@ -221,16 +277,27 @@ nav {
   list-style: none;
 }
 
-#menu-burger a,
+#menu-burger a:hover,
+#menu-user a:hover {
+  color: #261201;
+}
+
+#menu-burger a {
+  color: #D9B88F;
+  display: block;
+  margin-bottom: 25px;
+  margin-left: 50px;
+}
+
 #menu-user a {
   color: #D9B88F;
   display: block;
-  margin-bottom: 30px;
-  text-decoration: none;
+  margin-bottom: 15px;
+  padding-top: 8px;
 }
 
 .navigation {
-  min-height: 200px;
+  min-height: 150px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -243,9 +310,14 @@ nav {
   display: none;
 }
 
+.navigation #logoMobile {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
 .navigation #logoMobile,
 .navigation #logoDesktop {
-  margin-left: 20px;
   max-width: 70%;
   min-width: 75px;
   border-radius: 50%;
@@ -255,20 +327,15 @@ nav {
   -o-border-radius: 50%;
 }
 
-#banniere {
-  width: 100%;
-  height: 40%;
-  background-image: url("img/banniere.png");
-  background-size: cover;
-  background-position: center;
+.navigation a:nth-last-child(2) {
+  margin: 0 auto;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+#mobile {
+  margin: 0 auto;
 }
 
+/* ===================================== MEDIA QUERIES BURGER ============================================ */
 @media screen and (min-width: 950px) {
   .navigation #logoDesktop {
     margin-left: 0;
@@ -290,6 +357,12 @@ nav {
     min-height: 0;
     padding-top: 0;
   }
+  #menu-burger a,
+  #menu-user a {
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+  }
   #menu-burger li a,
   #menu-user li a {
     color: #D9B88F;
@@ -300,98 +373,39 @@ nav {
     justify-content: space-evenly;
   }
   #menu-burger {
-    width: 450px;
+    width: 370px;
   }
   #menu-user {
     display: flex;
-    width: 300px;
+    width: 230px;
     justify-content: space-evenly;
   }
   #menu-burger ul {
     margin: 0;
-  }
-  .container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+    justify-content: space-between;
+    width: 500px;
   }
   #menu-burger.overlay,
   #menu-user.overlay {
     display: none;
   }
+  #mobile {
+    display: none;
+  }
 }
-/* =========================================  HEADER C&I  ====================================== */
-#banniereCI {
-  width: 100%;
-  height: 90%;
-  position: relative;
-  background-image: url("img/banniere.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+@media screen and (max-width: 1200px) {
+  #menu-burger ul {
+    width: 400px;
+  }
 }
-
-/* ============================================== FOOTER ==================================================*/
-footer {
-  background: #324001;
-  color: #D9B88F;
-  position: relative;
+@media screen and (min-width: 1200px) {
+  #menu-burger {
+    width: 500px;
+  }
+  .navigation #logoDesktop {
+    display: block;
+  }
 }
-
-#reseaux ul li,
-#politiques ul li {
-  display: inline-block;
-  margin-right: 15px;
-}
-
-#reseaux ul,
-#politiques ul,
-#copyright ul {
-  text-align: center;
-}
-
-#reseaux {
-  margin-bottom: 100px;
-  padding-top: 20px;
-}
-
-#reseaux i {
-  font-size: 40px;
-  color: #D9B88F;
-}
-
-#reseaux i:hover {
-  color: #261201;
-}
-
-#politiques {
-  padding-bottom: 20px;
-  font-size: 1.2rem;
-}
-
-#politiques ul li a:hover {
-  color: #261201;
-}
-
-#copyright {
-  padding: 30px;
-}
-
-#reseaux img {
-  position: absolute;
-  top: 15px;
-  right: 30px;
-  height: auto;
-}
-
-#politiques li a {
-  color: #D9B88F;
-}
-
-#politiques li a:hover {
-  color: #261201;
-}
-
 /* ===================================== DERNIERES RECETTES / SLIDER  ======================================= */
 .slider-container {
   max-width: 700px;
@@ -527,36 +541,65 @@ footer {
   padding: 150px;
 }
 
-/* ===================================== MEDIA QUERIES ============================================ */
-.breadcrumb {
-  list-style: none;
-  padding: 10px;
-  margin: 0;
-  background-color: #D9B88F;
-  border-radius: 4px;
-  display: flex;
+/* ===================================================== FOOTER ===============================================================*/
+footer {
+  background: #324001;
+  color: #D9B88F;
+  position: relative;
 }
 
-.breadcrumb li {
-  display: inline;
-  margin-right: 5px;
+#reseaux ul li,
+#politiques ul li {
+  display: inline-block;
+  margin-right: 15px;
 }
 
-.breadcrumb li:last-child {
-  font-weight: bold;
+#reseaux ul,
+#politiques ul,
+#copyright ul {
+  text-align: center;
 }
 
-.breadcrumb li::after {
-  content: ">";
-  margin-left: 5px;
-  margin-right: 5px;
-  color: #323232;
+#reseaux {
+  margin-bottom: 100px;
+  padding-top: 20px;
 }
 
-.breadcrumb li:last-child::after {
-  content: none;
+#reseaux i {
+  font-size: 40px;
+  color: #D9B88F;
 }
 
-.breadcrumb a {
-  color: #323232;
-}/*# sourceMappingURL=style.css.map */
+#reseaux i:hover {
+  color: #261201;
+}
+
+#politiques {
+  padding-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+#politiques ul li a:hover {
+  color: #261201;
+}
+
+#copyright {
+  padding: 30px;
+}
+
+#reseaux img {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  height: auto;
+}
+
+#politiques li a {
+  color: #D9B88F;
+}
+
+#politiques li a:hover {
+  color: #261201;
+}
+
+/* ===================================== MEDIA QUERIES ============================================ *//*# sourceMappingURL=style.css.map */

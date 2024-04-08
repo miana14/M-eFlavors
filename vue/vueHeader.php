@@ -23,7 +23,7 @@ include ('vueHead.php');
                             <li><a href="./?action=contact">Contact</a></li>
                         </ul>
                     </div>
-                    <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logoMobile"></a>
+                    <a href="./?action=accueil" id="mobile"><img src="assets/img/logo.PNG" alt="logo" id="logoMobile"></a>
                 <!-- </div> -->
 
                 <div id="burger-user">
