@@ -1,5 +1,11 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
-<div>recettes</div>
+<section>
+    <article>
+        recettes
+    </article>
+</section>
+
+
 <?php include './vue/vueFooter.php'; ?>

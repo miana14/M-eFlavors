@@ -8,7 +8,9 @@ include ('vueHead.php'); ?>
 <header>
         <nav>
             <ul class="navigation" role="navigation">
-                <div class="container">
+                <!-- <div class="container"> -->
+
+                <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logoDesktop"></a>
                     <div id="burger">
                         <span></span>
                     </div>
@@ -21,8 +23,8 @@ include ('vueHead.php'); ?>
                             <li><a href="./?action=contact">Contact</a></li>
                         </ul>
                     </div>
-                    <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logo"></a>
-                </div>
+                    <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logoMobile"></a>
+                <!-- </div> -->
 
                 <div id="burger-user">
                     <span></span>
@@ -56,7 +58,6 @@ include ('vueHead.php'); ?>
                 ?>
             </ul>
         </nav>
-        <div id="banniere"></div>
         <!-- Breadcrumb Trail -->
         <?php $action = isset($_GET['action']) ? $_GET['action'] : ''; ?>
         <ul class="breadcrumb">

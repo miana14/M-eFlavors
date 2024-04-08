@@ -117,7 +117,7 @@ nav {
   height: 2px;
   opacity: 1;
   position: absolute;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease;
 }
 
 /* ========================== */
@@ -239,7 +239,12 @@ nav {
   align-items: center;
 }
 
-.navigation img {
+.navigation #logoDesktop {
+  display: none;
+}
+
+.navigation #logoMobile,
+.navigation #logoDesktop {
   margin-left: 20px;
   max-width: 70%;
   min-width: 75px;
@@ -264,9 +269,13 @@ nav {
   justify-content: space-around;
 }
 
-@media screen and (min-width: 1135px) {
-  .navigation img {
+@media screen and (min-width: 950px) {
+  .navigation #logoDesktop {
     margin-left: 0;
+    display: block;
+  }
+  .navigation #logoMobile {
+    display: none;
   }
   .navigation #burger,
   #burger-user {
@@ -288,15 +297,27 @@ nav {
   #menu-burger ul,
   #menu-user ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   #menu-burger {
     width: 450px;
+  }
+  #menu-user {
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+  }
+  #menu-burger ul {
+    margin: 0;
   }
   .container {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+  }
+  #menu-burger.overlay,
+  #menu-user.overlay {
+    display: none;
   }
 }
 /* =========================================  HEADER C&I  ====================================== */
