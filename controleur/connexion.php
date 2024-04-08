@@ -9,7 +9,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 ?>
 
 <?php 
-require './modele/mdl_connexion.php';
+require_once './modele/mdl_connexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];

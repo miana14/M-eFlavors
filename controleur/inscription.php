@@ -6,7 +6,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 }
 ?>
 
-<?php require './modele/mdl_inscription.php';
+<?php require_once './modele/mdl_inscription.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];

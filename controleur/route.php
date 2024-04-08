@@ -24,6 +24,12 @@ function routage($action)
         case "recettes":
             $fichier = "nosRecettes.php";
             break;
+        case "recette":
+            $fichier = "recette.php";
+            break;
+        case "creationRecette":
+            $fichier = "creationRecette.php";
+            break;
         case "forum":
             $fichier = "forum.php";
             break;

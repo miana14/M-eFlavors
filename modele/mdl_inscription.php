@@ -48,7 +48,7 @@ function inscriptionUser($email, $login, $mdp)
             return "Erreur(1) de connexion à la base de données, veuillez contacter le service client";
         }
     } catch (PDOException $e) {
-        return "Erreur(2) de connexion à la base de données, veuillez contacter le service client";
+        return "Erreur(2) de connexion à la base de données, veuillez contacter le service client" .$e->getMessage() ;
     } finally {
         if (isset($conn)) {
             $conn = null;

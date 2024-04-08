@@ -47,7 +47,7 @@ CREATE TABLE `ingredients` (
   `calories` decimal(6,2) NOT NULL
 );
 
-INSERT INTO `ingredients` (`nom`, `lipides`, `glucides`, `fibres`, `proteines`, `calories`) VALUES
+INSERT INTO `ingredients` (`nom_`, `lipides_`, `glucides`, `fibres`, `proteines`, `calories_`) VALUES
 ('ail', 0.50, 33.00, 2.10, 6.40, 149.00),
 ('beurre', 81.00, 0.10, 0.00, 0.60, 717.00),
 ('cannelle moulue', 1.20, 80.00, 53.00, 4.00, 247.00),
