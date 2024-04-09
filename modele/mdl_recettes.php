@@ -13,17 +13,14 @@ function recupRecettes()
     try {
         $conn = connexionPDO();
 
-        // recup l'auteur, le titre, image
+
         $sql = "SELECT id_recette, titre_ , url_image, login FROM fiche_recette INNER JOIN utilisateurs ON fiche_recette.id_utilisateur = utilisateurs.id_utilisateur";
         $stmt = $conn->prepare($sql);
 
         if ($stmt->execute()) {
-            //2.3.1 Récupération de la ligne de résultat de l'execution de la requête
             $recettes = $stmt->fetchAll();
-            //2.3.2 Envoie du résultat pour le traitement de la vue
             return $recettes;
         } else {
-            //2.3.3 Dans le cas ou on a une erreur SQL on remonte un message d'erreur
             return "Erreur : " . $sql . "<br>" . $stmt->errorInfo()[2];
         }
 
@@ -43,19 +40,16 @@ function recupRecette($id_recette)
     try {
         $conn = connexionPDO();
 
-        // recup l'auteur, le titre, image
+
         $sql = "SELECT titre_ , difficulte, temps, type_de_plat_, url_image, description, login FROM fiche_recette INNER JOIN utilisateurs ON fiche_recette.id_utilisateur = utilisateurs.id_utilisateur WHERE id_recette = :id_recette";
         $stmtRecup = $conn->prepare($sql);
 
         $stmtRecup->bindParam(':id_recette', $id_recette);
 
         if ($stmtRecup->execute()) {
-            //2.3.1 Récupération de la ligne de résultat de l'execution de la requête
             $recette = $stmtRecup->fetch();
-            //2.3.2 Envoie du résultat pour le traitement de la vue
             return $recette;
         } else {
-            //2.3.3 Dans le cas ou on a une erreur SQL on remonte un message d'erreur
             return "Erreur : " . $sql . "<br>" . $stmtRecup->errorInfo()[2];
         }
 
@@ -105,13 +99,12 @@ function ajoutRecette($titre_, $difficulte, $temps, $type_de_plat_, $url_image, 
 
         //3-Sauvegarde de la recette en base de donnée
 
-        //3.1
+        
         $sqlAjout = "INSERT INTO fiche_recette (titre_, difficulte, temps, type_de_plat_, url_image, description, id_utilisateur )
                 VALUES (:titre_, :difficulte, :temps, :type_de_plat_, :url_image, :description, :id_utilisateur)";
-        //3.2
+
         $stmtAjout = $conn->prepare($sqlAjout);
 
-        //3.3 Liaison des paramètres
         $stmtAjout->bindParam(':titre_', $titre_);
         $stmtAjout->bindParam(':difficulte', $difficulte);
         $stmtAjout->bindParam(':temps', $temps);
@@ -147,12 +140,9 @@ function recupIngredients()
         $sql = "SELECT * FROM ingredients";
         $stmt = $conn->prepare($sql);
         if ($stmt->execute()) {
-            //2.3.1 Récupération de la ligne de résultat de l'execution de la requête
             $ingredients = $stmt->fetchAll();
-            //2.3.2 Envoie du résultat pour le traitement de la vue
             return $ingredients;
         } else {
-            //2.3.3 Dans le cas ou on a une erreur SQL on remonte un message d'erreur
             return "Erreur : " . $sql . "<br>" . $stmt->errorInfo()[2];
         }
 
@@ -178,23 +168,23 @@ function ajoutIngredientDansRecette($id_recette, $id_ingredient)
         $sql = "INSERT INTO composer (id_recette, id_ingredient) VALUES (:id_recette,:id_ingredient)";
         $stmtAjoutIngredientRecette = $conn->prepare($sql);
 
-        $stmtAjoutIngredientRecette->bindParam(":id_recette",$id_recette);
-        $stmtAjoutIngredientRecette->bindParam(":id_ingredient",$id_ingredient);
+        $stmtAjoutIngredientRecette->bindParam(":id_recette", $id_recette);
+        $stmtAjoutIngredientRecette->bindParam(":id_ingredient", $id_ingredient);
 
-        if($stmtAjoutIngredientRecette->execute()){
+        if ($stmtAjoutIngredientRecette->execute()) {
             return "L'ajout a été fait !";
-        }else {
+        } else {
             return "L'ajout a échoué.";
         }
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
 
         return "Erreur de connexion à la base de données, veuillez contacter le service client" . $e->getMessage();
 
-        } finally {
-            if (isset($conn)) {
-                $conn = null;
-            }
+    } finally {
+        if (isset($conn)) {
+            $conn = null;
         }
+    }
 }
 
 // recuperer le nom des ingredients utilisés dans la recette
@@ -204,27 +194,27 @@ function recupIngredientsRecette($id_recette)
     try {
         $conn = connexionPDO();
         $sql = "SELECT nom_, lipides_, glucides, fibres, proteines, calories_ FROM composer INNER JOIN ingredients ON ingredients.id_ingredient=composer.id_ingredient WHERE id_recette = :id_recette ";
-        
+
         $stmtRecupIngredientRecette = $conn->prepare($sql);
 
-        $stmtRecupIngredientRecette->bindParam(":id_recette",$id_recette);
-    
-    
-        if($stmtRecupIngredientRecette->execute()){
+        $stmtRecupIngredientRecette->bindParam(":id_recette", $id_recette);
+
+
+        if ($stmtRecupIngredientRecette->execute()) {
             $ingredients = $stmtRecupIngredientRecette->fetchAll();
-           return $ingredients;
-        }else {
+            return $ingredients;
+        } else {
             return "La récupération a échouée.";
         }
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
 
         return "Erreur de connexion à la base de données, veuillez contacter le service client" . $e->getMessage();
 
-        } finally {
-            if (isset($conn)) {
-                $conn = null;
-            }
+    } finally {
+        if (isset($conn)) {
+            $conn = null;
         }
+    }
 }
 
 
@@ -236,19 +226,16 @@ function recupEtapes($id_recette)
     try {
         $conn = connexionPDO();
 
-        // recup l'auteur, le titre, image
+
         $sql = "SELECT description FROM etapes WHERE id_recette=:id_recette";
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':id_recette', $id_recette);
 
         if ($stmt->execute()) {
-            //2.3.1 Récupération de la ligne de résultat de l'execution de la requête
             $etapes = $stmt->fetchAll();
-            //2.3.2 Envoie du résultat pour le traitement de la vue
             return $etapes;
         } else {
-            //2.3.3 Dans le cas ou on a une erreur SQL on remonte un message d'erreur
             return "Erreur : " . $sql . "<br>" . $stmt->errorInfo()[2];
         }
 
@@ -304,19 +291,16 @@ function recupCommentaires($id_recette)
     try {
         $conn = connexionPDO();
 
-        // recup l'auteur, le titre, image
+
         $sql = "SELECT contenu, login FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur=utilisateurs.id_utilisateur WHERE id_recette=:id_recette";
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':id_recette', $id_recette);
 
         if ($stmt->execute()) {
-            //2.3.1 Récupération de la ligne de résultat de l'execution de la requête
             $commentaires = $stmt->fetchAll();
-            //2.3.2 Envoie du résultat pour le traitement de la vue
             return $commentaires;
         } else {
-            //2.3.3 Dans le cas ou on a une erreur SQL on remonte un message d'erreur
             return "Erreur : " . $sql . "<br>" . $stmt->errorInfo()[2];
         }
 
@@ -372,7 +356,6 @@ function ajoutCommentaire($contenu, $id_recette, $adresse_mail_auteur)
         //3.2
         $stmtAjout = $conn->prepare($sqlAjout);
 
-        //3.3 Liaison des paramètres
         $stmtAjout->bindParam(':contenu', $contenu);
         $stmtAjout->bindParam(':id_recette', $id_recette);
         $stmtAjout->bindParam(':id_utilisateur', $idUtilisateur);

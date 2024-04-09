@@ -1,7 +1,13 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
+<?php if (!isset($_SESSION)) {
+        session_start();
+    }
+    ?>
+
 <?php require_once './modele/mdl_recettes.php'; ?>
+
 
 <?php $recette = recupRecette($_GET['id_recette']); ?>
 
@@ -9,13 +15,13 @@
     <article class="info-recette">
         <ul>
             <li id="difficulte">
-                <?= $recette['difficulte']; ?>
+                Difficulté : <?= $recette['difficulte']; ?>
             </li>
             <li id="temps">
-                <?= $recette['temps']; ?>
+                Durée : <?= $recette['temps']; ?>
             </li>
             <li id="type_de_plat">
-                <?= $recette['type_de_plat_']; ?>
+                Type de plat : <?= $recette['type_de_plat_']; ?>
             </li>
         </ul>
     </article>
@@ -23,12 +29,12 @@
 
     <article class="description-recette">
         <div id="img">
-            <img src="<?php ?>" alt="<?php ?>">
+            <img src="<?= $recette['url_image']; ?>" alt="<?php ?>">
         </div>
-        <div>
-            <h1 id="titre_recette"></h1>
-            <p id="auteur"></p>
-            <p id="description"></p>
+        <div class="contenu">
+            <h1 id="titre_recette"><?= $recette['titre_']; ?></h1>
+            <p id="auteur"><?= $recette['login']; ?></p>
+            <p id="description"><?= $recette['description']; ?></p>
         </div>
     </article>
 
@@ -37,9 +43,10 @@
     <?php $recupIngredientsRecette = recupIngredientsRecette($_GET['id_recette']); ?>
 
     <article class="ingredients">
-        <ul class="afficher les numeros en css">
+        <ul>
+            <p id="label">Ingrédients :</p>
             <?php foreach ($recupIngredientsRecette as $ingredient) {
-                echo "<li>" . $ingredient['nom_'] . " " . $ingredient['lipides_'] . " " . $ingredient['glucides'] . " " . $ingredient['fibres'] . " " . $ingredient['proteines'] . " " . $ingredient['calories_'] . "</li>"; // . " " .
+                echo "<li>" . $ingredient['nom_'] . " " . $ingredient['lipides_'] . " " . $ingredient['glucides'] . " " . $ingredient['fibres'] . " " . $ingredient['proteines'] . " " . $ingredient['calories_'] . "</li>";
             }
             ?>
         </ul>
@@ -48,33 +55,43 @@
     <!--  etapes   -->
 
     <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>
+    <?php $compteur = 1; ?>
 
 
     <article class="etapes">
-        <ol class="afficher les numeros en css">
+        <ul>
+            <p id="label">Etapes :</p>
             <?php foreach ($recupEtapes as $etape) {
-                echo "<li>" . $etape['description'] . "</li>";
+                echo "<li>" . $compteur . ". " . $etape['description'] . "</li>";
+                $compteur++;
             }
 
             ?>
-        </ol>
+        </ul>
     </article>
 
+    <?php if (isset($_SESSION['email_user'])) { ?>
+        <article class="ajout-commentaire">
+            <h4></h4>
+                <form action="./?action=recette" method="POST">
+                    <textarea name="form-commentaire" id="commentaire" cols="100" rows="5"></textarea>
+                    <button>Poster</button>
+                </form>
+                <?php // recup du login user correspondant à l'id_recette ?>
+            <p>
+                <?php // recup du commentaire correpondant a l'id_utilisateur en lien avec l'id_recette     ?>
+            </p>
 
-    <article class="ajout-commentaire">
-        <!-- ajout de la partie commentaire, visible seulement par les utilisateurs inscrits -->
-        <h4>
-            <?php // recup du login user correspondant à l'id_recette    ?>
-        </h4>
-        <p>
-            <?php // recup du commentaire correpondant a l'id_utilisateur en lien avec l'id_recette    ?>
-        </p>
+        <?php } else { ?>
+            <div>
+                <h3>Veuillez vous connecter pour ajouter un commentaire !</h3>
+            </div>
+        <?php } ?>
     </article>
-
 
     <article class="commentaires">
         <ul>
-            <?php // le foreach avec les li correspondant aux quantités de commentaires existants   ?>
+            <?php // le foreach avec les li correspondant aux quantités de commentaires existants    ?>
         </ul>
     </article>
 </section>

@@ -99,8 +99,8 @@ nav {
     h2{
         padding-bottom: 30px;
     }
-}
 
+}
 .form-card {
     @include form-style;
     width: 340px;
@@ -113,6 +113,148 @@ nav {
 
 .form-button {
     @include button-style($primary-color);
+}
+
+@media screen and (max-width: 500px){
+    .form-card{
+        width: 230px;
+    }
+}
+
+/* ========================================== VUE CARDS  ================================================ */
+
+@mixin card-style {
+    border: 1px solid rgba(0, 0, 0, 0.125); 
+    border-radius: 0.25rem; 
+    padding: 1rem; 
+    margin-bottom: 1rem; 
+    background-color: $secondary-color; 
+    width: 230px;
+    
+    img {
+        margin: 0 auto;
+        width: 230px;
+        height: 150px;
+        border-top-left-radius: 0.25rem;  
+        border-top-right-radius: 0.25rem;  
+    }
+  
+    .card-body {
+        padding: 1rem; 
+        color: $primary-color;
+        position: relative;
+        height: 80px;
+        
+    }
+  
+    .card-title {
+        font-size: 1.25rem; 
+        margin-bottom: 0.75rem;
+    }
+  
+    .card-text {
+        margin-bottom: 1rem; 
+    }
+    .card-lien{
+        @include button-style($primary-color);
+        padding: 10px !important;
+        margin-left: 10px ;
+        margin-bottom: 10px ;
+        
+    }
+  }
+.card {
+    @include card-style;
+    height: 300px;
+}
+.card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+}
+.nos_recettes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+/* ========================================== VUE FOCUS SUR UNE RECETTE  ================================================ */
+.info-recette{
+    margin-top: 30px;
+}
+.info-recette ul{
+    display: flex;
+    width: auto;
+    justify-content: space-around; 
+}
+
+.info-recette ul li{
+    @include button-style;
+    text-align: center;
+}
+
+.description-recette{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+.description-recette #img img{
+    width: 100%;
+    align-items: center;
+}
+// .description-recette #img img{
+//     max-width: 70%;
+//     align-items: center;
+// }
+.description-recette #img {
+    width: 100%;
+    align-items: center;
+}
+.description-recette .contenu{
+    width: 100%;
+}
+.description-recette .contenu #titre_recette,
+.description-recette .contenu #auteur{
+    padding-bottom: 10px;
+}
+.description-recette .contenu #description{
+    padding-top: 25px;
+}
+
+@mixin bloc-ingredients-etapes-style{
+    background-color: $secondary-color;
+    color: $primary-color;
+    width: auto;
+    margin: 30px;
+    padding: 20px;
+    
+    #label{
+        padding-bottom: 20px;
+    }
+}
+.ingredients {
+    @include bloc-ingredients-etapes-style;
+}
+.etapes {
+    @include bloc-ingredients-etapes-style;
+}
+
+@media screen and (min-width: 500px){
+    .description-recette{
+        flex-direction: row;
+    }
+}
+
+.ajout-commentaire form{
+    width: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ajout-commentaire form textarea{
+    margin-bottom: 10px;
 }
 
 
@@ -192,7 +334,6 @@ nav {
     height: 2px;
     opacity: 1;
     position: absolute;
-    transition: 0.3s ease;
 }
 /* ========================== */
 #burger span:before,
@@ -259,7 +400,6 @@ nav {
     opacity: 0;
     text-align:center;
     padding-top:200px;
-    transition: all 0.3s ease;
 }
   #menu-burger ul,
   #menu-user ul{
@@ -279,7 +419,7 @@ nav {
   #menu-user.overlay{
     visibility: visible;
     opacity: 1;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
     padding-top: 0px;
     background: #324001;
     margin-top: 150px;
@@ -593,6 +733,7 @@ footer {
     top: 15px;
     right: 30px; 
     height: auto;
+    width: 50px;
 }
 #politiques li a{
     color: $primary-color;

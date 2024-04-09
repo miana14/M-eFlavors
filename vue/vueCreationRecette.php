@@ -9,6 +9,9 @@
             <label for="titre">Titre</label><br>
             <input type="text" id="titre" name="titre" required>
             <br>
+            <label for="auteur">Auteur</label><br>
+            <input type="text" id="auteur" name="auteur" required>
+            <br>
             <label for="description">Description</label><br>
             <input type="text" id="description" name="description" required>
             <br>
