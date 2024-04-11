@@ -199,7 +199,6 @@ function recupIngredientsRecette($id_recette)
 
         $stmtRecupIngredientRecette->bindParam(":id_recette", $id_recette);
 
-
         if ($stmtRecupIngredientRecette->execute()) {
             $ingredients = $stmtRecupIngredientRecette->fetchAll();
             return $ingredients;
@@ -253,22 +252,16 @@ function ajoutEtape($description, $id_recette)
 {
 
     try {
-        // 1- Connexion à la base de données
         $conn = connexionPDO();
 
-        //2-Sauvegarde du commentaire en base de données
-
-        //2.1
-        $sqlAjout = "INSERT INTO etapes (description, id_recette)
-                VALUES (:description, :id_recette)";
-        //2.2
+        //2-Sauvegarde du commentaire en base de données 
+        $sqlAjout = "INSERT INTO etapes (description, id_recette) VALUES (:description, :id_recette)";
+       
         $stmtAjout = $conn->prepare($sqlAjout);
 
-        //2.2 Liaison des paramètres
         $stmtAjout->bindParam(':description', $description);
         $stmtAjout->bindParam(':id_recette', $id_recette);
 
-        //2.4 Exécutez la requête SQL
         if ($stmtAjout->execute()) {
             return "Etape ajoutée avec succès !";
         } else {
@@ -290,7 +283,6 @@ function recupCommentaires($id_recette)
 {
     try {
         $conn = connexionPDO();
-
 
         $sql = "SELECT contenu, login FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur=utilisateurs.id_utilisateur WHERE id_recette=:id_recette";
         $stmt = $conn->prepare($sql);
@@ -318,49 +310,38 @@ function ajoutCommentaire($contenu, $id_recette, $adresse_mail_auteur)
 {
 
     try {
-        // 1- Connexion à la base de données
+       
         $conn = connexionPDO();
 
-        // 2- Récupération de id_utilisateur en fonction de l'email fourni par la session
-
-        //2.1 Définition de la requête SQL a éxécuter
         $sqlUtilisateur = "SELECT id_utilisateur FROM utilisateurs WHERE adresse_mail_ = :adresse_mail_auteur";
-        //2.2 Préparation de l'objet de connexion a la base de donnée utilisant la requête sql définie précedement
         $stmtUtilisateur = $conn->prepare($sqlUtilisateur);
 
-        //2.3 Complète la requête SQL avec les données à injecter
         $stmtUtilisateur->bindParam(':adresse_mail_auteur', $adresse_mail_auteur);
 
-        //2.4 Execution de la requête SQL
         if ($stmtUtilisateur->execute()) {
-            //2.4.1 Récupération de la ligne de résultat de l'execution de la requête
             $row = $stmtUtilisateur->fetch();
-            //2.4.2 Récupération de la colonne id_utilisateur de la ligne récupérée précedemment
             $idUtilisateur = $row['id_utilisateur'];
         } else {
-            //2.4.3 Dans le cas ou on a une erreur SQL on remonte un message d'erreur
             return "Erreur : " . $sqlUtilisateur . "<br>" . $stmtUtilisateur->errorInfo()[2];
         }
 
-        // 2.5 Test si il y a bien un utilisateur
+        // Test si il y a bien un utilisateur
         if ($idUtilisateur == NULL) {
-            //2.5.1 Dans le cas ou l'utilisateur n'existe pas on renvoie un message d'erreur
+            // Dans le cas ou l'utilisateur n'existe pas on renvoie un message d'erreur
             return "Erreur : l'utilisateur n'a pas été trouvé en base de données";
         }
 
-        //3-Sauvegarde du commentaire en base de données
+        // Sauvegarde du commentaire en base de données
 
-        //3.1
         $sqlAjout = "INSERT INTO commentaires (contenu, id_recette, id_utilisateur )
                 VALUES (:contenu, :id_recette, :id_utilisateur)";
-        //3.2
         $stmtAjout = $conn->prepare($sqlAjout);
 
         $stmtAjout->bindParam(':contenu', $contenu);
         $stmtAjout->bindParam(':id_recette', $id_recette);
         $stmtAjout->bindParam(':id_utilisateur', $idUtilisateur);
 
-        //3.4 Exécutez la requête SQL
+        // Exécutez la requête SQL
         if ($stmtAjout->execute()) {
             return "Commentaire ajouté avec succès !";
         } else {

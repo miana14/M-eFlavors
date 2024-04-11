@@ -7,12 +7,12 @@ include ('vueHead.php');
 <body>
     <header>
     <nav>
-            <ul class="navigation" role="navigation">
+            <ul class="navigation" role="navigation" style="padding : 0;">
                 <!-- <div class="container"> -->
 
                 <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logoDesktop"></a>
                     <div id="burger">
-                        <span></span>
+                        <span><i class="fa-solid fa-bars"></i></span>
                     </div>
 
                     <div id="menu-burger">
@@ -27,7 +27,7 @@ include ('vueHead.php');
                 <!-- </div> -->
 
                 <div id="burger-user">
-                    <span></span>
+                    <span><i class="fa-solid fa-user"></i></span>
                 </div>
                 <?php
                 // Vérifier si des données de connexion ont été soumises via POST

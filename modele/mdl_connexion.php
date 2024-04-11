@@ -9,7 +9,7 @@ function connexionUser($email, $mdp)
         $conn = connexionPDO();
 
         // Préparez la requête SQL pour vérifier les informations de connexion
-        $sql = "SELECT mdp_ FROM utilisateurs WHERE adresse_mail_ = :email";
+        $sql = "SELECT  id_utilisateur,login, mdp_  FROM utilisateurs WHERE adresse_mail_ = :email";
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':email', $email);
@@ -19,17 +19,18 @@ function connexionUser($email, $mdp)
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch();
             $mot_de_passe_hache = $row['mdp_'];
+            $login = $row['login'];
 
             if (password_verify($mdp, $mot_de_passe_hache)) {
 
-                return "Le mot de passe est valide !";
+                return $login;
 
             } else {
                 return "Mot de passe incorrect.";
             }
         } else {
             return "Identifiant incorrect.";
-        }
+        } 
     } catch (PDOException $e) {
         return "Erreur de connexion à la base de données, veuillez contacter le service client";
     } finally {

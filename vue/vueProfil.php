@@ -2,6 +2,46 @@
 <?php include './vue/vueHeaderC&I.php'; ?>
 
 <div id="banniereCI">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ajouter la div contenant les infos de l'utilisateur et afficher a cote le formulaire pour modifier les données -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <article class="form-card">
         <h2>Modification de mon Profil</h2>
         <form action="inscription.php" method="POST" class="form">

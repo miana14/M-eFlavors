@@ -2,9 +2,9 @@
 <?php include './vue/vueHeader.php'; ?>
 
 <?php if (!isset($_SESSION)) {
-        session_start();
-    }
-    ?>
+    session_start();
+}
+?>
 
 <?php require_once './modele/mdl_recettes.php'; ?>
 
@@ -54,7 +54,7 @@
 
     <!--  etapes   -->
 
-    <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>
+    <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>                                             <!-- L'ID RECETTE EST LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
     <?php $compteur = 1; ?>
 
 
@@ -73,25 +73,32 @@
     <?php if (isset($_SESSION['email_user'])) { ?>
         <article class="ajout-commentaire">
             <h4></h4>
-                <form action="./?action=recette" method="POST">
-                    <textarea name="form-commentaire" id="commentaire" cols="100" rows="5"></textarea>
-                    <button>Poster</button>
-                </form>
-                <?php // recup du login user correspondant à l'id_recette ?>
+            <form action="./?action=recette" method="POST">
+                <textarea name="form-commentaire" id="commentaire" cols="100" rows="5">
+                    
+                </textarea>
+                <button>
+                    <a href="./?action=recette">
+                        Poster
+                    </a>
+                </button>
+            </form>
+            <?php // recup du login user correspondant à l'id_recette   ?>
             <p>
-                <?php // recup du commentaire correpondant a l'id_utilisateur en lien avec l'id_recette     ?>
+                <?php // recup du commentaire correpondant a l'id_utilisateur en lien avec l'id_recette  ?>
             </p>
 
         <?php } else { ?>
-            <div>
+            <div id="bloc-else-connexion">
                 <h3>Veuillez vous connecter pour ajouter un commentaire !</h3>
             </div>
+        </article>
         <?php } ?>
-    </article>
+    
 
     <article class="commentaires">
         <ul>
-            <?php // le foreach avec les li correspondant aux quantités de commentaires existants    ?>
+            <?php // le foreach avec les li correspondant aux quantités de commentaires existants      ?>
         </ul>
     </article>
 </section>

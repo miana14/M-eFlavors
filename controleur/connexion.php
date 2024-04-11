@@ -16,19 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = $_POST['mdp'];
     $result = connexionUser($email,$mdp);
 
-    if ($result == "Le mot de passe est valide !") { 
-        if(!isset($_SESSION)){
+    if ($result == "Mot de passe incorrect." || $result == "Identifiant incorrect." || $result == "Erreur de connexion à la base de données, veuillez contacter le service client") { 
+        if (!isset($_SESSION)){
+            session_start(); 
+       }
+       $_SESSION['msg'] = $result;
+        // Redirection vers la page de connexion avec un message d'erreur si la connexion échoue
+    } else {
+        // Redirection vers la page d'accueil si la connexion réussit
+        if (!isset($_SESSION)){
             session_start(); 
        }
         $_SESSION['email_user'] = $_POST['email'];
-        header("Location: ./?action=default");
-        // Redirection vers la page d'accueil si la connexion réussit
-    } else {
-        // Redirection vers la page de connexion avec un message d'erreur si la connexion échoue
-        if(!isset($_SESSION)){
-             session_start(); 
-        }
-        $_SESSION['msg'] = $result;
+        $_SESSION['login'] = $result;
+       header("Location: ./?action=default");
     } 
 }
 ?>
