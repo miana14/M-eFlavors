@@ -4,12 +4,18 @@
 <?php if (!isset($_SESSION)) {
     session_start();
 }
+
 ?>
+
 
 <?php require_once './modele/mdl_recettes.php'; ?>
 
+<?php $id_recette = $_GET['id_recette']; ?>
+<?php $recette = recupRecette($id_recette);
 
-<?php $recette = recupRecette($_GET['id_recette']); ?>
+
+// var_dump($_GET['id_recette']);
+// var_dump($recette); ?>
 
 <section>
     <article class="info-recette">
@@ -73,12 +79,12 @@
     <?php if (isset($_SESSION['email_user'])) { ?>
         <article class="ajout-commentaire">
             <h4></h4>
-            <form action="./?action=recette&id_recette=" method="POST">
+            <form action="./?action=ajoutCommentaire&id_recette=<?= $_GET['id_recette'] ?>" method="POST">
                 <textarea name="contenu" id="commentaire" cols="100" rows="5"></textarea>
                 <button type="submit">
-                    
-                        Poster
-                  
+
+                    Poster
+
                 </button>
             </form>
             <?php // recup du login user correspondant à l'id_recette   ?>
@@ -95,13 +101,18 @@
 
     <?php $recupCommentaires = recupCommentaires($_GET['id_recette']); ?>
 
-    <article class="commentaires">
-            <?php foreach ($recupCommentaires as $commentaire) {
-                echo "<h3 class=\"auteur-commentaire\">" . $commentaire['login'] . "</h3>";
-                echo "<p class=\"texte-commentaire\">" . $commentaire['contenu'] . "</p>";
-            }
 
+    <article class="coms">
+        <h2 class="titre-coms">Commentaires</h2>
+        <div class="contenu-coms">
+            <?php foreach ($recupCommentaires as $commentaire) {
+                echo "<div class=\"bloc-commentaires\">";
+                echo "<h3 class=\"auteur-commentaire\"> Auteur : " . $commentaire['login'] . "</h3>";
+                echo "<p class=\"texte-commentaire\">" . $commentaire['contenu'] . "</p>";
+                echo "</div>";
+            }
             ?>
+        </div>
     </article>
 </section>
 

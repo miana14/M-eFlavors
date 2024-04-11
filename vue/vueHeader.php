@@ -28,15 +28,6 @@ include ('vueHead.php');
                     <span><i class="fa-solid fa-user"></i></span>
                 </div>
                 <?php
-                // Vérifier si des données de connexion ont été soumises via POST
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $email = $_POST['email'];
-                    $mdp = $_POST['mdp'];
-                } else {
-                    // Par défaut, initialiser les variables à vide pour éviter les erreurs
-                    $email = "";
-                    $mdp = "";
-                }
                 // Afficher le menu utilisateur
                 echo '<div id="menu-user">';
                 if (!isset($_SESSION)) {

@@ -43,7 +43,7 @@ function inscriptionUser($email, $login, $mdp)
         $stmt->bindParam(':mdp', $mdp_hache);
 
         if ($stmt->execute()) {
-            return "Inscription réussie !";
+            return $conn->lastInsertId();
         } else {
             return "Erreur(1) de connexion à la base de données, veuillez contacter le service client";
         }

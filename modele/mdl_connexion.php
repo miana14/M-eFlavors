@@ -6,10 +6,11 @@ function connexionUser($email, $mdp)
 {
 
     try {
+
         $conn = connexionPDO();
 
         // Préparez la requête SQL pour vérifier les informations de connexion
-        $sql = "SELECT  id_utilisateur,login, mdp_  FROM utilisateurs WHERE adresse_mail_ = :email";
+        $sql = "SELECT  id_utilisateur,login, mdp_ , is_Admin FROM utilisateurs WHERE adresse_mail_ = :email";
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':email', $email);
@@ -19,11 +20,11 @@ function connexionUser($email, $mdp)
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch();
             $mot_de_passe_hache = $row['mdp_'];
-            $login = $row['login'];
+
 
             if (password_verify($mdp, $mot_de_passe_hache)) {
 
-                return $login;
+                return $row;
 
             } else {
                 return "Mot de passe incorrect.";

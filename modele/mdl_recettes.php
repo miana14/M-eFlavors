@@ -115,7 +115,7 @@ function ajoutRecette($titre_, $difficulte, $temps, $type_de_plat_, $url_image, 
 
         //3.4 Exécutez la requête SQL
         if ($stmtAjout->execute()) {
-            return $conn->lastInsertId();
+            return $conn->lastInsertId(); // vu que c'est un ajout on recupere l'id de l'insere de la recette
         } else {
             return "L'ajout de la recette a échouée";
         }

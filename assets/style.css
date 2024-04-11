@@ -119,6 +119,9 @@ nav {
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   background: #261201;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .form-profil input[type=text],
 .form-profil input[type=password],
@@ -340,6 +343,7 @@ nav {
   padding-top: 25px;
 }
 
+/* ===================================== MIXINS VUE RECETTE ====================================== */
 .ingredients {
   background-color: #324001;
   color: #D9B88F;
@@ -405,6 +409,30 @@ nav {
 
 .ajout-commentaire button a {
   color: #D9B88F;
+}
+
+.bloc-commentaires {
+  background-color: #324001;
+  color: #D9B88F;
+  width: auto;
+  margin: 30px;
+  padding: 20px;
+  background: #261201 !important;
+}
+.bloc-commentaires #label {
+  padding-bottom: 20px;
+}
+
+.bloc-commentaires .auteur-commentaire {
+  padding-bottom: 30px;
+}
+
+.titre-coms {
+  text-align: center;
+  color: #261201;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 2rem;
 }
 
 /* ================================================  HEADER C&I  =============================================== */

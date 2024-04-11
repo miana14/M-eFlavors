@@ -8,35 +8,26 @@
 
 <?php require_once './modele/mdl_profil.php'; ?>
 
-<?php $profil = recupProfil(); ?>
+<?php $id_utilisateur = $_SESSION['id_utilisateur']; ?>
 
-<article class="profil-utilisateur">
-    <div class="contenu">
-        <h1 id=""><?= $profil['adresse_mail_']; ?></h1>
-        <p id=""><?= $profil['login']; ?></p>
-        <p id=""><?= $profil['genre']; ?></p>
-        <p id=""><?= $profil['age']; ?></p>
-        <p id=""><?= $profil['niveau']; ?></p>
-    </div>
-</article>
-
-
+<?php $profil = recupProfil($id_utilisateur); ?>
 
 <section class="mon-profil">
     <article class="form-profil">
         <h2>Modification de mon Profil</h2>
-        <form action="inscription.php" method="POST" class="form">
+        <form action="./?action=profil" method="POST" class="form">
+            <?php require './vue/vueMessageErreur.php'?>
             <fieldset>
                 <legend>Genre</legend>
 
                 <div id="genre">
-                    <input type="radio" id="homme" name="genre" value="homme" />
+                    <input type="radio" name="genre" value="homme" <?php if($profil['genre'] == 'homme') echo "checked"?>/>
                     <label for="homme">Homme</label>
 
-                    <input type="radio" id="femme" name="genre" value="femme" />
+                    <input type="radio" name="genre" value="femme" <?php if($profil['genre'] == 'femme') echo "checked"?>/>
                     <label for="femme">Femme</label>
 
-                    <input type="radio" id="autre" name="genre" value="autre" />
+                    <input type="radio" name="genre" value="autre" <?php if($profil['genre'] == 'autre') echo "checked"?>/>
                     <label for="autre">Autre</label>
                 </div>
             </fieldset><br>
@@ -44,36 +35,46 @@
                 <legend>Votre Niveau</legend>
 
                 <div id="niveau">
-                    <input type="radio" id="debutant" name="niv" value="debutant" checked />
+                    <input type="radio" name="niv" value="debutant" <?php if($profil['niveau'] == 'debutant') echo "checked"?> />
                     <label for="debutant">Débutant</label>
 
-                    <input type="radio" id="inter" name="niv" value="inter" />
+                    <input type="radio" name="niv" value="inter" <?php if($profil['niveau'] == 'inter') echo "checked"?>/>
                     <label for="inter">Intermédiaire</label>
 
-                    <input type="radio" id="expert" name="niv" value="expert" />
+                    <input type="radio" name="niv" value="expert" <?php if($profil['niveau'] == 'expert') echo "checked"?>/>
                     <label for="expert">Expert</label>
                 </div>
             </fieldset>
             <br>
             <br>
             <label for="age">Age</label><br>
-            <input type="number" id="age" name="age" min="15" max="125">
+            <input type="number" id="age" name="age" min="15" max="125" value="<?= $profil['age'] ?>">
+            <br>
+            <label for="login">Login</label><br>
+            <input type="text" name="login" value="<?= $profil['login'] ?>">
             <br>
             <label for="email">Adresse-mail </label><br>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<?= $profil['adresse_mail_'] ?>">
             <br>
             <label for="mdp">Mot de passe </label><br>
-            <input type="password" id="mdp" name="mdp" required>
+            <input type="password" id="mdp" name="mdp">
+            <?php 
+            if (isset($_SESSION['msg_mdp'])) {
+                $messagesMdp = $_SESSION['msg_mdp'];
+                echo "<ul>";
+                foreach ($messagesMdp as $message) {
+                    echo "<li>$message</li>";
+                }
+                echo "</ul>";
+                // effacer les messages une fois affichées
+                unset($_SESSION['msg_mdp']);
+            }
+            ?>
             <br>
             <input type="submit" value="MODIFIER" class="form-button" />
 
         </form>
     </article>
-
-
-
-
-    <!-- ajouter la div contenant les infos de l'utilisateur et afficher a cote le formulaire pour modifier les données -->
 
 </section>
 

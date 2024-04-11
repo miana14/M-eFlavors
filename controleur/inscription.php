@@ -18,11 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($resultVerification)) {
         // 2- effectuer l'inscription car les données sont vérifiées
         $resultInscription = inscriptionUser($email, $login, $mdp);
-        if ($resultInscription == "Inscription réussie !") {
+        if (is_numeric($resultInscription)) {
             if (!isset($_SESSION)) {
                 session_start();
             }
             //3- redirection car l'inscription a marchée
+            $_SESSION['id_utilisateur'] = $resultInscription;
+            $_SESSION['login'] = $_POST['login'];
             $_SESSION['email_user'] = $_POST['email'];
             header("Location: ./?action=default");
         } else {

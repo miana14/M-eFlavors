@@ -25,12 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Redirection vers la page d'accueil si la connexion réussit
         if (!isset($_SESSION)){
-            session_start(); 
+            session_start();
        }
+       $_SESSION['id_utilisateur'] = $result['id_utilisateur'];
         $_SESSION['email_user'] = $_POST['email'];
-        $_SESSION['login'] = $result;
+        $_SESSION['login'] = $result['login'];
+        $_SESSION['admin'] = $result['is_Admin'];
        header("Location: ./?action=default");
     } 
+    
 }
 ?>
 

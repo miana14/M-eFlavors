@@ -135,6 +135,9 @@ nav {
 }
 .form-profil{
     @include form-style;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 
@@ -260,7 +263,9 @@ nav {
     padding-top: 25px;
 }
 
-@mixin bloc-ingredients-etapes-style{
+/* ===================================== MIXINS VUE RECETTE ====================================== */
+
+@mixin bloc-ingredients-etapes-coms-style{
     background-color: $secondary-color;
     color: $primary-color;
     width: auto;
@@ -272,10 +277,10 @@ nav {
     }
 }
 .ingredients {
-    @include bloc-ingredients-etapes-style;
+    @include bloc-ingredients-etapes-coms-style;
 }
 .etapes {
-    @include bloc-ingredients-etapes-style;
+    @include bloc-ingredients-etapes-coms-style;
 }
 
 @media screen and (min-width: 500px){
@@ -311,6 +316,21 @@ nav {
     
 }
 
+.bloc-commentaires {
+    @include bloc-ingredients-etapes-coms-style;
+    background: $third-color !important;
+}
+
+.bloc-commentaires .auteur-commentaire{
+    padding-bottom : 30px;
+}
+.titre-coms{
+    text-align: center;
+    color: $third-color;
+    padding-top: 12px ;
+    padding-bottom: 12px;
+    font-size: 2rem;
+}
 
 /* ================================================  HEADER C&I  =============================================== */
 

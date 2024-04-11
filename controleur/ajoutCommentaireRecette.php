@@ -15,18 +15,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contenu = $_POST['contenu'];
     $id_recette = $_GET['id_recette'];
 
+  
+    
     if (!isset($_SESSION)) {
         session_start();
     }
+   
     
     $adresse_mail_auteur = $_SESSION['email_user'];
 
     $resultCommentaire = ajoutCommentaire($contenu, $id_recette, $adresse_mail_auteur);
-
-    // var_dump($resultCommentaire);
+    
+     $_SESSION['resultCommentaire'] = $resultCommentaire;
 
     if ($resultCommentaire == "Commentaire ajouté avec succès !") {
-        header("Location: ./?action=recette&id_recette=" .$id_recette . $resultCommentaire);
+        header("Location: ./?action=recette&id_recette=" .$id_recette ."&resultat_com=". $resultCommentaire);
+        
     }
 
 } else {
