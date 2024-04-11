@@ -49,7 +49,7 @@ nav {
     background: $secondary-color;
 }
 
-/* ======================================== MIXINS ========================================= */
+/* ======================================== MIXINS FORMULAIRE ========================================= */
 
 @mixin button-style($bg-color: $primary-color, $hover-color: $secondary-color) {
     text-transform: uppercase;
@@ -84,7 +84,8 @@ nav {
     input[type=text],
     input[type=password],
     input[type=email],
-    input[type=number] {
+    input[type=number],
+    textarea {
         border: 0;
         margin: 0 0 15px;
         padding: 10px;
@@ -108,6 +109,7 @@ nav {
     }
 
 }
+
 .form-card {
     @include form-style;
     width: 340px;
@@ -127,8 +129,39 @@ nav {
         width: 230px;
     }
 }
+/* ============================================================== MON PROFIL  ============================================================== */
+.mon-profil{
+    width: 100%;
+}
+.form-profil{
+    @include form-style;
+}
 
-/* ========================================== VUE CARDS  ================================================ */
+
+
+/* ===================================================== CREATION DE RECETTE ===============================================================*/
+
+.form-creation-recette{
+    @include form-style;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.nos_recettes .button-ajout-recette,
+.nos_recettes .button-ajout-recette.else{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+.nos_recettes .button-ajout-recette a,
+.nos_recettes .button-ajout-recette.else {
+    @include button-style($primary-color, $third-color); 
+}
+
+
+/* ============================================================== VUE CARDS  ============================================================== */
 
 @mixin card-style {
     border: 1px solid rgba(0, 0, 0, 0.125); 
@@ -652,6 +685,22 @@ nav {
         width: 50%;
     }
 }
+
+/* ===================================================== FORUM ===============================================================*/
+
+.forum{
+    width: 100%;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+.forum .texte-forum {
+    @include button-style($primary-color, $third-color);
+    text-align: center;
+    padding-bottom: 100px;
+    padding-top: 100px;
+    font-size: 2rem;
+}
+
 
 /* ===================================================== FOOTER ===============================================================*/
 footer {

@@ -2,7 +2,7 @@
 <?php include './vue/vueHeader.php'; ?>
 
 <section>
-    <article class="form-card">
+    <article class="form-creation-recette">
         <h2>Création de Recette</h2>
         <form action="./?action=creationRecette" method="POST" class="form">
 

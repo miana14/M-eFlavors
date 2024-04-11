@@ -54,7 +54,7 @@
 
     <!--  etapes   -->
 
-    <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>                                             <!-- L'ID RECETTE EST LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
+    <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>
     <?php $compteur = 1; ?>
 
 
@@ -73,14 +73,12 @@
     <?php if (isset($_SESSION['email_user'])) { ?>
         <article class="ajout-commentaire">
             <h4></h4>
-            <form action="./?action=recette" method="POST">
-                <textarea name="form-commentaire" id="commentaire" cols="100" rows="5">
+            <form action="./?action=recette&id_recette=" method="POST">
+                <textarea name="contenu" id="commentaire" cols="100" rows="5"></textarea>
+                <button type="submit">
                     
-                </textarea>
-                <button>
-                    <a href="./?action=recette">
                         Poster
-                    </a>
+                  
                 </button>
             </form>
             <?php // recup du login user correspondant à l'id_recette   ?>
@@ -93,13 +91,17 @@
                 <h3>Veuillez vous connecter pour ajouter un commentaire !</h3>
             </div>
         </article>
-        <?php } ?>
-    
+    <?php } ?>
+
+    <?php $recupCommentaires = recupCommentaires($_GET['id_recette']); ?>
 
     <article class="commentaires">
-        <ul>
-            <?php // le foreach avec les li correspondant aux quantités de commentaires existants      ?>
-        </ul>
+            <?php foreach ($recupCommentaires as $commentaire) {
+                echo "<h3 class=\"auteur-commentaire\">" . $commentaire['login'] . "</h3>";
+                echo "<p class=\"texte-commentaire\">" . $commentaire['contenu'] . "</p>";
+            }
+
+            ?>
     </article>
 </section>
 

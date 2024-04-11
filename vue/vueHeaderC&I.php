@@ -6,13 +6,12 @@ include ('vueHead.php'); ?>
 
 <body>
 <header>
-        <nav>
-            <ul class="navigation" role="navigation">
-                <!-- <div class="container"> -->
+<nav>
+            <ul class="navigation" role="navigation" >
 
                 <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logoDesktop"></a>
                     <div id="burger">
-                        <span></span>
+                        <span><i class="fa-solid fa-bars"></i></span>
                     </div>
 
                     <div id="menu-burger">
@@ -23,11 +22,10 @@ include ('vueHead.php'); ?>
                             <li><a href="./?action=contact">Contact</a></li>
                         </ul>
                     </div>
-                    <a href="./?action=accueil"><img src="assets/img/logo.PNG" alt="logo" id="logoMobile"></a>
-                <!-- </div> -->
+                    <a href="./?action=accueil" id="mobile"><img src="assets/img/logo.PNG" alt="logo" id="logoMobile"></a>
 
                 <div id="burger-user">
-                    <span></span>
+                    <span><i class="fa-solid fa-user"></i></span>
                 </div>
                 <?php
                 // Vérifier si des données de connexion ont été soumises via POST

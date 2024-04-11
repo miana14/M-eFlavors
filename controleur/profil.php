@@ -7,4 +7,9 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 
 ?>
 
+
+
+
+
+
 <?php include './vue/vueProfil.php'; ?>

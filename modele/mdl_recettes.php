@@ -334,7 +334,7 @@ function ajoutCommentaire($contenu, $id_recette, $adresse_mail_auteur)
         // Sauvegarde du commentaire en base de données
 
         $sqlAjout = "INSERT INTO commentaires (contenu, id_recette, id_utilisateur )
-                VALUES (:contenu, :id_recette, :id_utilisateur)";
+                VALUES (:contenu, :id_recette, :id_utilisateur) ";
         $stmtAjout = $conn->prepare($sqlAjout);
 
         $stmtAjout->bindParam(':contenu', $contenu);

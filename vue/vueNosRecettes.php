@@ -4,6 +4,16 @@
 <?php require_once './modele/mdl_recettes.php'; ?>
 
 <section class="nos_recettes">
+        <?php if (isset($_SESSION['email_user'])) { ?>
+                <div class="button-ajout-recette">
+                        <a href="./?action=creationRecette">Ajouter une Recette</a>
+                </div>
+        <?php } else { ?>
+                <div class="button-ajout-recette else">
+                        Veuillez vous connecter pour ajouter une nouvelle recette !
+                </div>
+        <?php } ; ?>
+
         <?php
         $recettes = recupRecettes();
         foreach ($recettes as $recette) {
