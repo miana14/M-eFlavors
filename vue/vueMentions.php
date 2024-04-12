@@ -3,7 +3,7 @@
 
 <section>
     <article class="mentions">
-        <h2 class="title-mentions">Mentions Légales :</h2>
+        <h2 class="title-mentions">Mentions Légales </h2>
         <p>
             Les mentions légales de notre site sont un élément essentiel de notre engagement envers la transparence et
             la
@@ -15,7 +15,7 @@
             visons à instaurer un climat de confiance avec nos utilisateurs et à leur offrir une expérience en ligne
             sécurisée et transparente.
         </p>
-        <h3 class="title-ul">Editeur :</h3>
+        <h3 class="title-ul">Editeur </h3>
         <address>
             <ul>
                 <li>MãeFlavors</li>
@@ -25,14 +25,14 @@
             </ul>
             </adress>
 
-            <h3 class="title-ul">Hébergeur du site :</h3>
+            <h3 class="title-ul">Hébergeur du site </h3>
             <ul>
                 <li>O2Switch</li>
                 <li>Chem. des Pardiaux, 63000 Clermont-Ferrand</li>
                 <li>Téléphonne: 04.44.44.60.40</li>
                 <li>Site: <a href="https://www.o2switch.fr/">O2Switch</a></li>
             </ul>
-            <h3 class="title-ul">Directeur de la publication :</h3>
+            <h3 class="title-ul">Directrice de la publication </h3>
             <ul>
                 <li>Mme. Mariana Loureiro Dias</li>
                 <p>
@@ -41,7 +41,7 @@
                     consulter régulièrement afin de rester informé des éventuelles modifications.
                 </p>
             </ul>
-            <h3 class="title-ul">Liens Hypertextes :</h3>
+            <h3 class="title-ul">Liens Hypertextes </h3>
             <ul>
                 <p>Le Site peut comporter des liens hypertextes ou des références à d’autres sites Internet. L’Editeur
                     n’exerce aucun contrôle sur les contenus des sites Internet tiers et ne pourra être tenu responsable
@@ -52,7 +52,7 @@
                     d’une autorisation préalable par l’Editeur, qui pourra être révoquée à tout moment.
                 </p>
             </ul>
-            <h3 class="title-ul">Propriété intellectuelle :</h3>
+            <h3 class="title-ul">Propriété intellectuelle </h3>
             <ul>
                 <p>L’intégralité des pages, textes, images, graphiques, animations, vidéos, sons et autres œuvres ainsi
                     que leurs arrangements représentés sur le Site sont protégés par droit d’auteur ou d’autres droits
@@ -67,7 +67,7 @@
             </ul>
     </article>
     <article class="cgu">
-        <h2 class="title-cgu">Conditions Générales d'Utilisation :</h2>
+        <h2 class="title-cgu">Conditions Générales d'Utilisation </h2>
         <p>
             Sur notre site, nous appliquons une politique de tolérance zéro envers tout contenu discriminatoire, tel que
             le racisme,

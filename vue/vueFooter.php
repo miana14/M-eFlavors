@@ -6,8 +6,8 @@
             <li><a href="www.instagram.com "><i class="fa-brands fa-instagram"></i></a></li>
             <li><a href="www.x.com"><i class="fa-brands fa-x-twitter"></i></a></li>
             <li><a href="www.github.com"><i class="fa-brands fa-github"></i></a></li>
-            <ul>
-                <!-- <li><a href="./?action=accueil"><img src="assets/img/arrow.png" id="arrow"></a></li> -->
+            <ul id="admin">
+               <li><a href="./?action=admin"><i class="fa-solid fa-lock"></i></a></li>
             </ul>
             
         </ul>

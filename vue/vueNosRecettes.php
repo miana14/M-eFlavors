@@ -22,7 +22,6 @@
                 echo "<img  src='" . $recette['url_image'] . "'>";
                 echo "<div class=\"card-body\">";
                 echo "<h2 class=\"card-title\">" . $recette['titre_'] . "</h2>";
-                echo "<p class=\"card-texte\">" . $recette['login'] . " </p>";
                 echo "</div>";
                 echo "<a class=\"card-lien\" href='./?action=recette&id_recette=" . $recette['id_recette'] . "'>Voir la recette</a>";
                 echo "</div>";

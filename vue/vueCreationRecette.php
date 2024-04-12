@@ -1,7 +1,7 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
-<section>
+<!-- <section>
     <article class="form-creation-recette">
         <h2>Création de Recette</h2>
         <form action="./?action=creationRecette" method="POST" class="form">
@@ -53,7 +53,7 @@
             <input type="text" id="url_image" name="url_image" placeholder="url de l'image" required>
             <br>
             <label for="ingredient">Ingrédients</label><br>
-            <input type="text" id="ingredients" name="ingredient" required> <!-- for each pour chaque ingredient sous forme de liste -->
+            <input type="text" id="ingredients" name="ingredient" required> <!-- for each pour chaque ingredient sous forme de liste 
             <br>
             <label for="etape">Etapes</label><br>
             <textarea id="etape" name="etape" required></textarea>
@@ -64,7 +64,7 @@
 
         </form>
     </article>
-</section>
+</section> -->
 
 
 <?php include './vue/vueFooter.php'; ?>

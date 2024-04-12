@@ -6,6 +6,12 @@ function routage($action)
 {
 
     switch ($action) {
+        case "admin":
+            $fichier = "admin.php";
+            break;
+        case "supprimerUtilisateur":
+            $fichier = "supprimerUtilisateur.php";
+            break;
         case "connexion":
             $fichier = "connexion.php";
             break;
@@ -27,9 +33,9 @@ function routage($action)
         case "recette":
             $fichier = "recette.php";
             break;
-        case "creationRecette":
-            $fichier = "creationRecette.php";
-            break;
+        // case "creationRecette":
+        //     $fichier = "creationRecette.php";
+        //     break;
         case "ajoutCommentaire":
             $fichier = "ajoutCommentaireRecette.php";
             break;

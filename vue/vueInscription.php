@@ -1,10 +1,10 @@
 <?php include './vue/vueHead.php'; ?>
-<?php include './vue/vueHeaderC&I.php'; ?>
+<?php include './vue/vueHeader.php'; ?>
 
-<div id="banniereCI">
+<!-- <div id="banniereCI"> -->
     <article class="form-card" id="inscription">
         <h2>Inscription</h2>
-        <?php require './vue/vueMessageErreur.php'?>
+        <?php require './vue/vueMessageErreur.php' ?>
         <form action="./?action=inscription" method="POST" class="form">
             <br>
             <label for="email">Adresse-mail *</label><br>
@@ -15,7 +15,7 @@
             <br>
             <label for="mdp">Mot de passe *</label><br>
             <input type="password" id="mdp" name="mdp" placeholder="<?php ?>" required>
-            <?php 
+            <?php
             if (isset($_SESSION['msg_mdp'])) {
                 $messagesMdp = $_SESSION['msg_mdp'];
                 echo "<ul>";
@@ -27,8 +27,14 @@
                 unset($_SESSION['msg_mdp']);
             }
             ?>
+            <input type="checkbox"  name="rgpd" value="rgpd" required>
+            <label for="rgpd">
+                J'autorise ce site à utiliser mes données personnelles selon
+                notre <a href="./?action=politiques" id="rgpd">Politique de confidentialité</a> *
+            </label>
+
             <br>
-            <input type="submit" value="S'inscrire" class="form-button" />
+            <input type="submit" value="S'inscrire" class="form-button"  id="btn-inscription"/>
 
         </form>
     </article>

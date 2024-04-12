@@ -2,7 +2,7 @@ let slides = document.querySelectorAll(".slider > .slider__item");
 
 let currentSlide = 0;
 
-let slideInterval = setInterval(nextSlide, 50000);
+let slideInterval = setInterval(nextSlide(0), 4000);
 
 function nextSlide() {
   goToSlide(currentSlide+1);

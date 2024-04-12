@@ -75,7 +75,10 @@ function modifierProfil($adresse_mail_, $login, $mdp_, $genre, $age, $niveau, $i
     }
 }
 
-
+function supprimerUtilisateur($id_utilisateur,$id_commentaire){
+    // je recupere l'id utilisateur je le met en correspondance avec les commentaires qu'il a posté et apres je supprime tout ce qui 
+    // est rapport avec l'id utilisateur   
+}
 
 
 

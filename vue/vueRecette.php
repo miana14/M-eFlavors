@@ -39,7 +39,6 @@
         </div>
         <div class="contenu">
             <h1 id="titre_recette"><?= $recette['titre_']; ?></h1>
-            <p id="auteur"><?= $recette['login']; ?></p>
             <p id="description"><?= $recette['description']; ?></p>
         </div>
     </article>

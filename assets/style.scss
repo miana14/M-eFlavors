@@ -49,7 +49,7 @@ nav {
     background: $secondary-color;
 }
 
-/* ======================================== MIXINS FORMULAIRE ========================================= */
+/* ======================================== MIXINS FORMULAIRES ========================================= */
 
 @mixin button-style($bg-color: $primary-color, $hover-color: $secondary-color) {
     text-transform: uppercase;
@@ -114,10 +114,8 @@ nav {
     @include form-style;
     width: 340px;
     margin-top: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .form-button {
@@ -128,6 +126,16 @@ nav {
     .form-card{
         width: 230px;
     }
+}
+
+#btn-inscription {
+    margin-top: 20px;
+}
+#rgpd {
+    color: bisque;
+}
+#rgpd:hover{
+    color: $secondary-color;
 }
 /* ============================================================== MON PROFIL  ============================================================== */
 .mon-profil{
@@ -164,7 +172,7 @@ nav {
 }
 
 
-/* ============================================================== VUE CARDS  ============================================================== */
+/* ============================================================== VUE CARDS RECETTES ============================================================== */
 
 @mixin card-style {
     border: 1px solid rgba(0, 0, 0, 0.125); 
@@ -332,17 +340,6 @@ nav {
     font-size: 2rem;
 }
 
-/* ================================================  HEADER C&I  =============================================== */
-
-#banniereCI {
-    width: 100%;
-    height: 90%;
-    position: relative;
-    background-image: url('img/banniere.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
 
 /* ====================================================  HEADER  ===================================================== */
 
@@ -595,11 +592,9 @@ nav {
     position: relative;
     padding-bottom: 56.25%;
     overflow: hidden;
-    background: #ccc;
 }
 .slider__item img{
-    width: 100vh;
-    
+    width: 100vh; 
 }
 .slider__item{
     position: absolute; 
@@ -624,20 +619,24 @@ nav {
 }
   
 .controls__btn{
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%);
-    z-index: 99;
     padding: 10px;
-    position: absolute;
     display: inline-block;
     cursor: pointer;
+    border-radius: 100%;
+    border: none;
+    background-color: $secondary-color;
 }
 .controls__btn--prev{
     left: 0;
 }
 .controls__btn--next{
     right: 0;
+}
+.controls{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
 }
 
 /* ==================================== MENTIONS / POLITIQUES ============================================ */
@@ -722,6 +721,19 @@ nav {
 }
 
 
+/* ===================================================== ADMIN ===============================================================*/
+.content-admin {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 950px){
+    .content-admin{
+        flex-direction: row;
+    }
+}
+
 /* ===================================================== FOOTER ===============================================================*/
 footer {
     background: $secondary-color;
@@ -771,6 +783,9 @@ footer {
 }
 #politiques li a:hover{
     color: $third-color;
+}
+#reseaux #admin {
+    padding-top: 50px;
 }
 /* ===================================== MEDIA QUERIES ============================================ */
 
