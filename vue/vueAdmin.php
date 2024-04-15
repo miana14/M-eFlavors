@@ -32,12 +32,12 @@ function afficherRole($profil){
             <tbody>
                 <?php $profils = recupProfils();
                 foreach ($profils as $profil) {
-                    echo "<form method=\"post\" action=\"./action=supprimerUtilisateur\">";
+                    echo "<form method=\"post\" action=\"./?action=supprimerUtilisateur\">";
                     echo "<tr>";
                     echo "<td>" . $profil['adresse_mail_'] . "</td>";
                     echo "<td>" . $profil['login'] . "</td>";
                     echo "<td>" . afficherRole($profil) . "</td>";
-                    echo "<input type=\"hidden\" name=\"idUtilisateur\" value=\"". $profil['id_utilisateur'] ."\"></input>";
+                    echo "<input type='hidden' name=\"id_utilisateur\" value=\"". $profil['id_utilisateur'] ."\"></input>";
                     echo "<td><button type='submit'><i class='fa-solid fa-trash'></i></td>";
                     // echo "<td><button type=\"submit\" onclick=\"".supprimerUtilisateur($profil['id_utilisateur'])."\"><i class=\"fa-solid fa-trash\"></i></button></td>";
                     echo "</form>";

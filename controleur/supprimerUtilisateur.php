@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $supprimer = supprimerUtilisateur($id_utilisateur);
 
+    var_dump($supprimer);
+    
     if ($supprimer == "Utilisateur " . $id_utilisateur . " a été supprimé.") {
         header("Location: ./?action=admin");
     } else {

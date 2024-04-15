@@ -64,7 +64,7 @@ function modifierProfil($adresse_mail_, $login, $mdp_, $genre, $age, $niveau, $i
         }
 
     } catch (PDOException $e) {
-        if($e->getCode() == "23000"){
+        if ($e->getCode() == "23000") {
             return "Email déjà utilisé, veuillez en renseigner un autre.";
         }
         return "Erreur(2) de connexion à la base de données, veuillez contacter le service client";
@@ -75,22 +75,34 @@ function modifierProfil($adresse_mail_, $login, $mdp_, $genre, $age, $niveau, $i
     }
 }
 
-function supprimerUtilisateur($id_utilisateur){
+function supprimerUtilisateur($id_utilisateur)
+{
 
     try {
         $conn = connexionPDO();
 
 
-        $sql = "DELETE FROM utilisateurs WHERE id_utilisateur = :id_utilisateur";
-        $stmtsupprProfils = $conn->prepare($sql);
+        $sqlComs = "DELETE FROM commentaires WHERE id_utilisateur = :id_utilisateur";
+        $stmtsupprComs = $conn->prepare($sqlComs);
 
-        $stmtsupprProfils->bindParam(':id_utilisateur', $id_utilisateur);
+        $stmtsupprComs->bindParam(':id_utilisateur', $id_utilisateur);
 
-        if ($stmtsupprProfils->execute()) {
-            return "Utilisateur " . $id_utilisateur . " a été supprimé.";
+        if ($stmtsupprComs->execute()) {
+            $sqlProfils = "DELETE FROM utilisateurs WHERE id_utilisateur = :id_utilisateur";
+            $stmtsupprProfils = $conn->prepare($sqlProfils);
+
+            $stmtsupprProfils->bindParam(':id_utilisateur', $id_utilisateur);
+
+            if ($stmtsupprProfils->execute()) {
+                return "Utilisateur " . $id_utilisateur . " a été supprimé.";
+            } else {
+                return "Erreur(1) de connexion à la base de données, veuillez contacter le service client";
+            }
         } else {
             return "Erreur(1) de connexion à la base de données, veuillez contacter le service client";
         }
+
+
 
     } catch (PDOException $e) {
         return "Erreur(2) de connexion à la base de données, veuillez contacter le service client" . $e->getMessage();
@@ -98,7 +110,7 @@ function supprimerUtilisateur($id_utilisateur){
         if (isset($conn)) {
             $conn = null;
         }
-    } 
+    }
 }
 
 function recupProfils()
@@ -129,4 +141,3 @@ function recupProfils()
 }
 
 ?>
-

@@ -1,5 +1,5 @@
 CREATE TABLE utilisateurs(
-   identifiant INT,
+   id_utilisateur INT NOT NULL AUTO_INCREMENT,
    adresse_mail_ VARCHAR(50)  NOT NULL,
    login VARCHAR(50) ,
    mdp_ VARCHAR(128)  NOT NULL,
@@ -7,45 +7,36 @@ CREATE TABLE utilisateurs(
    age INT,
    niveau VARCHAR(50) ,
    is_Admin BOOLEAN,
-   PRIMARY KEY(identifiant),
-   UNIQUE(adresse_mail_),
-   UNIQUE(mdp_)
+   is_Ban BOOLEAN,
+   PRIMARY KEY(id_utilisateur),
+   UNIQUE(adresse_mail_)
 );
 
 CREATE TABLE fiche_recette(
-   titre_ VARCHAR(50) ,
+   id_recette INT NOT NULL AUTO_INCREMENT ,
+   titre_ VARCHAR(50)  NOT NULL,
    difficulte VARCHAR(50) ,
-   temps INT,
+   temps VARCHAR(50),
    type_de_plat_ VARCHAR(50)  NOT NULL,
-   src_images VARCHAR(50) ,
-   etapes VARCHAR(50) ,
-   ingrédients VARCHAR(50) ,
+   url_image VARCHAR(200) ,
    description VARCHAR(50) ,
-   PRIMARY KEY(titre_),
-   UNIQUE(type_de_plat_)
+   id_utilisateur INT NOT NULL,
+   PRIMARY KEY(id_recette),
+   UNIQUE(titre_),
 );
 
-CREATE TABLE messages(
-   contenu VARCHAR(50) ,
-   utilisateur VARCHAR(50) ,
-   la_date DATE,
-   PRIMARY KEY(contenu)
+CREATE TABLE ingredients(
+   id_ingredient INT NOT NULL AUTO_INCREMENT,
+   nom_ VARCHAR(50)  NOT NULL,
+   lipides_ decimal(6,2),
+   glucides decimal(6,2),
+   fibres decimal(6,2),
+   proteines decimal(6,2),
+   calories_ decimal(6,2),
+   PRIMARY KEY(id_ingredient),
+   UNIQUE(nom_)
 );
 
-CREATE TABLE sujet(
-   question VARCHAR(50) ,
-   reponse VARCHAR(50) ,
-   PRIMARY KEY(question)
-);
-
-CREATE TABLE `ingredients` (
-  `nom` varchar(30) NOT NULL,
-  `lipides` decimal(6,2) NOT NULL,
-  `glucides` decimal(6,2) NOT NULL,
-  `fibres` decimal(6,2) NOT NULL,
-  `proteines` decimal(6,2) NOT NULL,
-  `calories` decimal(6,2) NOT NULL
-);
 
 INSERT INTO `ingredients` (`nom_`, `lipides_`, `glucides`, `fibres`, `proteines`, `calories_`) VALUES
 ('ail', 0.50, 33.00, 2.10, 6.40, 149.00),
@@ -59,7 +50,7 @@ INSERT INTO `ingredients` (`nom_`, `lipides_`, `glucides`, `fibres`, `proteines`
 ('emmental', 28.00, 0.40, 0.00, 27.00, 392.00),
 ('farine', 1.00, 76.00, 2.70, 10.00, 364.00),
 ('filet de porc', 3.00, 0.00, 0.00, 0.00, 143.00),
-('huile olive', 100.00, 0.00, 0.00, 0.00, 884.00),
+('huile dolive', 100.00, 0.00, 0.00, 0.00, 884.00),
 ('knackis', 25.00, 4.00, 0.00, 13.00, 290.00),
 ('lait', 3.90, 4.80, 0.00, 3.30, 61.00),
 ('morue', 0.70, 0.00, 0.00, 20.00, 90.00),
@@ -81,74 +72,28 @@ INSERT INTO `ingredients` (`nom_`, `lipides_`, `glucides`, `fibres`, `proteines`
 ('vin blanc sec', 0.00, 0.70, 0.00, 0.00, 83.00),
 ('vin de porto', 0.00, 14.00, 0.00, 0.10, 141.00);
 
-CREATE TABLE envoyer(
-   identifiant INT,
-   contenu VARCHAR(50) ,
-   PRIMARY KEY(identifiant, contenu),
-   FOREIGN KEY(identifiant) REFERENCES utilisateurs(identifiant),
-   FOREIGN KEY(contenu) REFERENCES messages(contenu)
+CREATE TABLE commentaires(
+   id_commentaire INT NOT NULL AUTO_INCREMENT ,
+   contenu VARCHAR(500) ,
+   id_recette INT NOT NULL,
+   id_utilisateur INT NOT NULL,
+   PRIMARY KEY(id_commentaire),
+   FOREIGN KEY(id_recette) REFERENCES fiche_recette(id_recette),
+   FOREIGN KEY(id_utilisateur) REFERENCES utilisateurs(id_utilisateur)
 );
 
-CREATE TABLE repondre(
-   contenu VARCHAR(50) ,
-   contenu_1 VARCHAR(50) ,
-   PRIMARY KEY(contenu, contenu_1),
-   FOREIGN KEY(contenu) REFERENCES messages(contenu),
-   FOREIGN KEY(contenu_1) REFERENCES messages(contenu)
-);
-
-CREATE TABLE commenter(
-   identifiant INT,
-   titre_ VARCHAR(50) ,
-   PRIMARY KEY(identifiant, titre_),
-   FOREIGN KEY(identifiant) REFERENCES utilisateurs(identifiant),
-   FOREIGN KEY(titre_) REFERENCES fiche_recette(titre_)
-);
-
-CREATE TABLE valider(
-   identifiant INT,
-   titre_ VARCHAR(50) ,
-   PRIMARY KEY(identifiant, titre_),
-   FOREIGN KEY(identifiant) REFERENCES utilisateurs(identifiant),
-   FOREIGN KEY(titre_) REFERENCES fiche_recette(titre_)
-);
-
-CREATE TABLE créer_(
-   identifiant INT,
-   titre_ VARCHAR(50) ,
-   PRIMARY KEY(identifiant, titre_),
-   FOREIGN KEY(identifiant) REFERENCES utilisateurs(identifiant),
-   FOREIGN KEY(titre_) REFERENCES fiche_recette(titre_)
-);
-
-CREATE TABLE bannir(
-   identifiant INT,
-   identifiant_1 INT,
-   PRIMARY KEY(identifiant, identifiant_1),
-   FOREIGN KEY(identifiant) REFERENCES utilisateurs(identifiant),
-   FOREIGN KEY(identifiant_1) REFERENCES utilisateurs(identifiant)
-);
-
-CREATE TABLE contenir(
-   contenu VARCHAR(50) ,
-   question VARCHAR(50) ,
-   PRIMARY KEY(contenu, question),
-   FOREIGN KEY(contenu) REFERENCES messages(contenu),
-   FOREIGN KEY(question) REFERENCES sujet(question)
-);
-
-CREATE TABLE publier(
-   identifiant INT,
-   question VARCHAR(50) ,
-   PRIMARY KEY(identifiant, question),
-   FOREIGN KEY(identifiant) REFERENCES utilisateurs(identifiant),
-   FOREIGN KEY(question) REFERENCES sujet(question)
+CREATE TABLE etapes(
+   id_etape INT NOT NULL AUTO_INCREMENT ,
+   description VARCHAR(1000) ,
+   id_recette INT NOT NULL,
+   PRIMARY KEY(id_etape),
+   FOREIGN KEY(id_recette) REFERENCES fiche_recette(id_recette)
 );
 
 CREATE TABLE composer(
-   titre_ VARCHAR(50) ,
-   nom_ VARCHAR(50) ,
-   PRIMARY KEY(titre_, nom_),
-   FOREIGN KEY(titre_) REFERENCES fiche_recette(titre_),
-   FOREIGN KEY(nom_) REFERENCES ingredients(nom_)
+   id_recette INT NOT NULL ,
+   id_ingredient INT NOT NULL ,
+   PRIMARY KEY(id_recette, id_ingredient),
+   FOREIGN KEY(id_recette) REFERENCES fiche_recette(id_recette),
+   FOREIGN KEY(id_ingredient) REFERENCES ingredients(id_ingredient)
 );
