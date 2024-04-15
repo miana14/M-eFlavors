@@ -75,11 +75,58 @@ function modifierProfil($adresse_mail_, $login, $mdp_, $genre, $age, $niveau, $i
     }
 }
 
-function supprimerUtilisateur($id_utilisateur,$id_commentaire){
-    // je recupere l'id utilisateur je le met en correspondance avec les commentaires qu'il a posté et apres je supprime tout ce qui 
-    // est rapport avec l'id utilisateur   
+function supprimerUtilisateur($id_utilisateur){
+
+    try {
+        $conn = connexionPDO();
+
+
+        $sql = "DELETE FROM utilisateurs WHERE id_utilisateur = :id_utilisateur";
+        $stmtsupprProfils = $conn->prepare($sql);
+
+        $stmtsupprProfils->bindParam(':id_utilisateur', $id_utilisateur);
+
+        if ($stmtsupprProfils->execute()) {
+            return "Utilisateur " . $id_utilisateur . " a été supprimé.";
+        } else {
+            return "Erreur(1) de connexion à la base de données, veuillez contacter le service client";
+        }
+
+    } catch (PDOException $e) {
+        return "Erreur(2) de connexion à la base de données, veuillez contacter le service client" . $e->getMessage();
+    } finally {
+        if (isset($conn)) {
+            $conn = null;
+        }
+    } 
 }
 
+function recupProfils()
+{
 
+    try {
+        $conn = connexionPDO();
+
+
+        $sql = "SELECT id_utilisateur, adresse_mail_,login ,is_Admin FROM utilisateurs";
+        $stmtRecupProfils = $conn->prepare($sql);
+
+
+        if ($stmtRecupProfils->execute()) {
+            $recupProfils = $stmtRecupProfils->fetchAll();
+            return $recupProfils;
+        } else {
+            return "Erreur : " . $sql . "<br>" . $stmtRecupProfils->errorInfo()[2];
+        }
+
+    } catch (PDOException $e) {
+        return "Erreur de connexion à la base de données, veuillez contacter le service client" . $e->getMessage();
+    } finally {
+        if (isset($conn)) {
+            $conn = null;
+        }
+    }
+}
 
 ?>
+

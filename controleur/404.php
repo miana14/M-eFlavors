@@ -1,3 +1,5 @@
+
+
 <?php
 /**
 *	Controleur secondaire : connexion 
@@ -12,3 +14,4 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 ?>
 
 <?php include './vue/vue404.php'; ?>
+

@@ -4,15 +4,11 @@
 <?php require_once './modele/mdl_recettes.php'; ?>
 
 <section class="nos_recettes">
-        <?php if (isset($_SESSION['email_user'])) { ?>
+        <?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1 ) { ?>
                 <div class="button-ajout-recette">
                         <a href="./?action=creationRecette">Ajouter une Recette</a>
                 </div>
-        <?php } else { ?>
-                <div class="button-ajout-recette else">
-                        Veuillez vous connecter pour ajouter une nouvelle recette !
-                </div>
-        <?php } ; ?>
+        <?php } ?>
 
         <?php
         $recettes = recupRecettes();

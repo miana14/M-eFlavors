@@ -1,135 +1,56 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
+<?php require_once './modele/mdl_profil.php'; ?>
+
+<?php 
+
+function afficherRole($profil){
+    if($profil['is_Admin'] == 0){
+        return "Utilisateur";
+    }else{
+        return "Admin";
+    }
+}
 
 
-<section class="content-admin">
-    <article class="form-creation-recette">
-        <h2>Création de Recette</h2>
-        <form action="./?action=creationRecette" method="POST" class="form">
+?>
 
-            <label for="titre">Titre</label><br>
-            <input type="text" id="titre" name="titre" required>
-            <br>
-            <label for="auteur">Auteur</label><br>
-            <input type="text" id="auteur" name="auteur" required>
-            <br>
-            <label for="description">Description</label><br>
-            <input type="text" id="description" name="description" required>
-            <br>
 
-            <fieldset>
-                <legend>Type de plat</legend>
+<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
 
-                <div id="type_de_plat">
-                    <input type="radio" id="entree" name="type_de_plat" value="entree" />
-                    <label for="entree">Entrée</label>
+    <section class="content-admin">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Adresse-mail</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $profils = recupProfils();
+                foreach ($profils as $profil) {
+                    echo "<form method=\"post\" action=\"./action=supprimerUtilisateur\">";
+                    echo "<tr>";
+                    echo "<td>" . $profil['adresse_mail_'] . "</td>";
+                    echo "<td>" . $profil['login'] . "</td>";
+                    echo "<td>" . afficherRole($profil) . "</td>";
+                    echo "<input type=\"hidden\" name=\"idUtilisateur\" value=\"". $profil['id_utilisateur'] ."\"></input>";
+                    echo "<td><button type='submit'><i class='fa-solid fa-trash'></i></td>";
+                    // echo "<td><button type=\"submit\" onclick=\"".supprimerUtilisateur($profil['id_utilisateur'])."\"><i class=\"fa-solid fa-trash\"></i></button></td>";
+                    echo "</form>";
+                    echo "</tr>";
 
-                    <input type="radio" id="plat" name="type_de_plat" value="plat" />
-                    <label for="plat">Plat</label>
+                } ?>
+            </tbody>
+        </table>
 
-                    <input type="radio" id="dessert" name="type_de_plat" value="dessert" />
-                    <label for="dessert">Dessert</label>
-                </div>
-            </fieldset><br>
-            <fieldset>
-                <legend>Difficulté</legend>
-
-                <div id="difficulte">
-                    <input type="radio" id="facile" name="difficulte" value="facile" checked />
-                    <label for="facile">Facile</label>
-
-                    <input type="radio" id="moyen" name="difficulte" value="moyen" />
-                    <label for="moyen">Moyen</label>
-
-                    <input type="radio" id="difficile" name="difficulte" value="difficile" />
-                    <label for="difficile">Difficile</label>
-                </div>
-            </fieldset>
-            <br>
-            <br>
-            <label for="temps">Temps</label><br>
-            <input type="text" id="temps" name="temps">
-            <br>
-            <label for="url_image">Image</label><br>
-            <input type="text" id="url_image" name="url_image" placeholder="url de l'image" required>
-            <br>
-            <label for="ingredient">Ingrédients</label><br>
-            <input type="text" id="ingredients" name="ingredient" required> <!-- for each pour chaque ingredient sous forme de liste -->
-            <br>
-            <label for="etape">Etapes</label><br>
-            <textarea id="etape" name="etape" required></textarea>
-            <br>
-            <br>
-
-            <input type="submit" value="CREER" class="form-button" />
-
-        </form>
-    </article>
-
-    <article class="form-creation-recette">
-        <h2>Suppression d'Utilisateur</h2>
-        <form action="./?action=creationRecette" method="POST" class="form">
-
-            <label for="titre">Titre</label><br>
-            <input type="text" id="titre" name="titre" required>
-            <br>
-            <label for="auteur">Auteur</label><br>
-            <input type="text" id="auteur" name="auteur" required>
-            <br>
-            <label for="description">Description</label><br>
-            <input type="text" id="description" name="description" required>
-            <br>
-
-            <fieldset>
-                <legend>Type de plat</legend>
-
-                <div id="type_de_plat">
-                    <input type="radio" id="entree" name="type_de_plat" value="entree" />
-                    <label for="entree">Entrée</label>
-
-                    <input type="radio" id="plat" name="type_de_plat" value="plat" />
-                    <label for="plat">Plat</label>
-
-                    <input type="radio" id="dessert" name="type_de_plat" value="dessert" />
-                    <label for="dessert">Dessert</label>
-                </div>
-            </fieldset><br>
-            <fieldset>
-                <legend>Difficulté</legend>
-
-                <div id="difficulte">
-                    <input type="radio" id="facile" name="difficulte" value="facile" checked />
-                    <label for="facile">Facile</label>
-
-                    <input type="radio" id="moyen" name="difficulte" value="moyen" />
-                    <label for="moyen">Moyen</label>
-
-                    <input type="radio" id="difficile" name="difficulte" value="difficile" />
-                    <label for="difficile">Difficile</label>
-                </div>
-            </fieldset>
-            <br>
-            <br>
-            <label for="temps">Temps</label><br>
-            <input type="text" id="temps" name="temps">
-            <br>
-            <label for="url_image">Image</label><br>
-            <input type="text" id="url_image" name="url_image" placeholder="url de l'image" required>
-            <br>
-            <label for="ingredient">Ingrédients</label><br>
-            <input type="text" id="ingredients" name="ingredient" required> 
-            <br>
-            <label for="etape">Etapes</label><br>
-            <textarea id="etape" name="etape" required></textarea>
-            <br>
-            <br>
-
-            <input type="submit" value="SUPPRIMER" class="form-button" />
-
-        </form>
-    </article>
-</section>
+    </section>
+<?php } else {
+    header("Location: ./?action=404");
+} ?>
 
 
 <?php include './vue/vueFooter.php'; ?>

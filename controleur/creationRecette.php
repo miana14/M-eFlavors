@@ -79,4 +79,4 @@ function rechercheIdByNomFromIngredients($ingredients, $nomIngredient)
 
 
 
-<?php //include './vue/vueCreationRecette.php'; ?>
+<?php include './vue/vueCreationRecette.php'; ?>

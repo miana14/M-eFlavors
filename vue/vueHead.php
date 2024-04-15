@@ -13,6 +13,7 @@
 		<!-- scripts js -->
 		<script  src="assets/js/burgers.js" defer></script>
 		<script  src="assets/js/slider.js" defer></script>
+		<script  src="assets/js/api.js" defer></script>
 		<!-- ******************************************************** -->
         <title>MãeFlavors</title>
 		<link rel="icon" href="assets/img/logo.ico" type="image/ico">

@@ -33,9 +33,9 @@ function routage($action)
         case "recette":
             $fichier = "recette.php";
             break;
-        // case "creationRecette":
-        //     $fichier = "creationRecette.php";
-        //     break;
+        case "creationRecette":
+            $fichier = "creationRecette.php";
+            break;
         case "ajoutCommentaire":
             $fichier = "ajoutCommentaireRecette.php";
             break;
@@ -50,6 +50,9 @@ function routage($action)
             break;
         case "politiques":
             $fichier = "politiques.php";
+            break;
+        case "404":
+            $fichier = "404.php";
             break;
         default:
             $fichier = "accueil.php";

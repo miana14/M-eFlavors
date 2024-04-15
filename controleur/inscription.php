@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id_utilisateur'] = $resultInscription;
             $_SESSION['login'] = $_POST['login'];
             $_SESSION['email_user'] = $_POST['email'];
+            $_SESSION ['is_Admin'] = 0 ;
             header("Location: ./?action=default");
         } else {
             if (!isset($_SESSION)) {

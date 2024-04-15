@@ -6,18 +6,7 @@
 
 <?php
 
-require_once './modele/mdl_recettes.php';
 require_once './modele/mdl_profil.php';
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -51,7 +51,7 @@
         <ul>
             <p id="label">Ingrédients :</p>
             <?php foreach ($recupIngredientsRecette as $ingredient) {
-                echo "<li>" . $ingredient['nom_'] . " " . $ingredient['lipides_'] . " " . $ingredient['glucides'] . " " . $ingredient['fibres'] . " " . $ingredient['proteines'] . " " . $ingredient['calories_'] . "</li>";
+                echo "<li>" . $ingredient['nom_'] . " lip(" . $ingredient['lipides_'] . ") " . $ingredient['glucides'] . " " . $ingredient['fibres'] . " " . $ingredient['proteines'] . " " . $ingredient['calories_'] . "</li>";
             }
             ?>
         </ul>

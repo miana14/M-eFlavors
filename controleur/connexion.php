@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        $_SESSION['id_utilisateur'] = $result['id_utilisateur'];
         $_SESSION['email_user'] = $_POST['email'];
         $_SESSION['login'] = $result['login'];
-        $_SESSION['admin'] = $result['is_Admin'];
+        $_SESSION['is_Admin'] = $result['is_Admin'];
        header("Location: ./?action=default");
     } 
     

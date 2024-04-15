@@ -15,19 +15,18 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $adresse_mail_ = $_POST['email'];
-//     $login = $_POST['login'];
-//     $mdp_ = $_POST['mdp'];
-//     $genre = $_POST['genre'];
-//     $age = $_POST['age'];
-//     $niveau = $_POST['niv'];
-//     $id_utilisateur = $_SESSION['id_utilisateur'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id_utilisateur = $_POST['id_utilisateur'];
 
-// }
+    $supprimer = supprimerUtilisateur($id_utilisateur);
+
+    if ($supprimer == "Utilisateur " . $id_utilisateur . " a été supprimé.") {
+        header("Location: ./?action=admin");
+    } else {
+        $_SESSION['msg'] = $supprimer;
+    }
+}
 ?>
-
-
 
 
 <?php

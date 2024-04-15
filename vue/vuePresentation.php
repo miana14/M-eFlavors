@@ -1,7 +1,6 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
-<!-- <section> -->
     <article class="presentation">
         <div id="img-presentation">
             <img src="assets/img/mere-enfant.webp" alt="mere et enfant">
@@ -19,9 +18,10 @@
                 que
                 j'en ai eu à les partager avec vous. Bon appétit et bonne découverte !</p>
         </div>
-
+        <div>
+             <a href="">Plus d'informations sur la région</a> 
+        </div>
     </article>
-<!-- </section> -->
 
 
 
