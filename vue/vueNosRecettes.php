@@ -12,6 +12,7 @@
 
         <?php
         $recettes = recupRecettes();
+        
         foreach ($recettes as $recette) {
                 echo "<article class=\"card\">";
                 echo "<div class=\"card-recette\">";

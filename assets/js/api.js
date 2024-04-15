@@ -1,4 +1,9 @@
 function afficherDonnees() {
+
+    const infosRegionDiv = document.getElementById('data-region');
+
+    if(infosRegionDiv == null){
+    
     // URL de l'API externe
     let url = "https://mae-flavors-api.onrender.com/";
     fetch(url, {
@@ -14,43 +19,43 @@ function afficherDonnees() {
         })
         .then(data => {
             // Vérifier si les données sont bien présentes
+            // Vérifier si les données sont bien présente dans l'API
             if (data.culture && data.story && data.traditionalFestivals) {
-                // Afficher les informations sur l'équipe avec une classe pour contrôler la visibilité
+
+                //Crée une div avec une classe et un ID
                 const infosRegion = document.createElement('div');
+                //Rajoute la classe infos-region a la div
                 infosRegion.classList.add('infos-region');
-                infosRegion.id = 'data-';
-                infosRegion.style.display = 'block';
+                infosRegion.style.display = "block";
+                //Rajoute l'ID data-region a la div
+                infosRegion.id = 'data-region';
 
-                const infoParagraph = document.createElement('p');
-                infoParagraph.textContent = data.professionalTitle;
-                teamMemberDiv.appendChild(infoParagraph);
-                const linkedInLink = document.createElement('a');
-                linkedInLink.href = data.linkedinUrl;
-                linkedInLink.textContent = 'Profil LinkedIn';
-                teamMemberDiv.appendChild(linkedInLink);
-                const experiencesList = document.createElement('ul');
-                const experiencesTitle = document.createElement('p');
-                experiencesTitle.textContent = 'Expériences professionnelles :';
-                experiencesList.appendChild(experiencesTitle);
+                //Crée un paragraphe avec les donnée data.culture
+                const titreInfosRegion = document.createElement('h2');
+                titreInfosRegion.textContent = "Culture";
+                //Rajoute le paragraphe a la div infosRegion
+                infosRegion.appendChild(titreInfosRegion);
 
-                data.experiences.forEach(experience => {
-                    const experienceItem = document.createElement('li');
-                    experienceItem.textContent = $ {
-                        experience.role
-                    }
-                    chez $ {
-                        experience.company
-                    }($ {
-                        experience.duration
-                    });
-                    experiencesList.appendChild(experienceItem);
-                });
+                //Crée un paragraphe avec les donnée data.culture
+                const infoCulture = document.createElement('p');
+                infoCulture.textContent = data.culture;
+                //Rajoute le paragraphe a la div infosRegion
+                infosRegion.appendChild(infoCulture);
 
-                teamMemberDiv.appendChild(experiencesList);
+                //Crée un paragraphe avec les donnée data.story
+                const infostory = document.createElement('p');
+                infostory.textContent = data.story;
+                //Rajoute le paragraphe a la div infosRegion
+                infosRegion.appendChild(infostory);
 
-                let blockProfil = document.getElementById('block-' + $idProfil);
-                // Ajouter le div au document
-                blockProfil.appendChild(teamMemberDiv);
+                //Crée un paragraphe avec les donnée data.traditionalFestivals
+                const infotraditionalFestivals = document.createElement('p');
+                infotraditionalFestivals.textContent = data.culture;
+                //Rajoute le paragraphe a la div infosRegion
+                infosRegion.appendChild(infotraditionalFestivals);
+
+                let contenuCulture = document.getElementById('block-culture');
+                contenuCulture.appendChild(infosRegion);
 
             } else {
                 // Gérer les erreurs si les données ne sont pas complètes
@@ -61,4 +66,11 @@ function afficherDonnees() {
             // Gérer les erreurs si la requête a échoué
             console.error('Erreur lors de la récupération des données :', error);
         });
+    }else {
+        if(infosRegionDiv.style.display == "block"){
+            infosRegionDiv.style.display = "none";
+        }else {
+            infosRegionDiv.style.display = "block";
+        }
+    }
 }

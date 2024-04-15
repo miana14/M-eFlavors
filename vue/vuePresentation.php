@@ -18,10 +18,13 @@
                 que
                 j'en ai eu à les partager avec vous. Bon appétit et bonne découverte !</p>
         </div>
-        <div>
-             <a href="">Plus d'informations sur la région</a> 
+        <button onclick="afficherDonnees()" >Plus d'informations sur la région</button>
+        <div id="block-culture">
+             
         </div>
+         
     </article>
+    
 
 
 

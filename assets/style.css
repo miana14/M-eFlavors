@@ -230,6 +230,76 @@ nav {
   background: #261201;
 }
 
+/* ===================================================== MODIF DE RECETTE ===============================================================*/
+.form-modif-recette {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  padding: 45px;
+  color: #D9B88F;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #261201;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.form-modif-recette input[type=text],
+.form-modif-recette input[type=password],
+.form-modif-recette input[type=email],
+.form-modif-recette input[type=number],
+.form-modif-recette textarea {
+  border: 0;
+  margin: 0 0 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 10px;
+}
+.form-modif-recette legend {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+.form-modif-recette #niveau, .form-modif-recette #genre {
+  padding: 5px;
+}
+.form-modif-recette label {
+  margin: 5px;
+}
+.form-modif-recette h2 {
+  padding-bottom: 30px;
+}
+
+.button-modif-recette,
+.button-modif-recette.else {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+
+.button-modif-recette a,
+.button-modif-recette.else {
+  text-transform: uppercase;
+  font-weight: bold;
+  outline: 0;
+  background: #324001;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #D9B88F;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.button-modif-recette a:hover, .button-modif-recette a:active, .button-modif-recette a:focus,
+.button-modif-recette.else:hover,
+.button-modif-recette.else:active,
+.button-modif-recette.else:focus {
+  background: #261201;
+}
+
 /* ============================================================== VUE CARDS RECETTES ============================================================== */
 .card {
   border: 1px solid rgba(0, 0, 0, 0.125);

@@ -170,6 +170,26 @@ nav {
 .nos_recettes .button-ajout-recette.else {
     @include button-style($primary-color, $third-color); 
 }
+/* ===================================================== MODIF DE RECETTE ===============================================================*/
+
+.form-modif-recette{
+    @include form-style;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.button-modif-recette,
+.button-modif-recette.else{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+.button-modif-recette a,
+.button-modif-recette.else {
+    @include button-style($primary-color, $third-color); 
+}
 
 
 /* ============================================================== VUE CARDS RECETTES ============================================================== */

@@ -20,9 +20,8 @@ CREATE TABLE fiche_recette(
    type_de_plat_ VARCHAR(50)  NOT NULL,
    url_image VARCHAR(200) ,
    description VARCHAR(50) ,
-   id_utilisateur INT NOT NULL,
    PRIMARY KEY(id_recette),
-   UNIQUE(titre_),
+   UNIQUE(titre_)
 );
 
 CREATE TABLE ingredients(

@@ -15,9 +15,5 @@
   </div>
 </article>
 
-<article>
-    <h2>Dernières Recettes</h2>
-</article>
-
 
 <?php include './vue/vueFooter.php'; ?>

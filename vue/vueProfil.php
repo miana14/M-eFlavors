@@ -57,7 +57,7 @@
             <input type="email" id="email" name="email" value="<?= $profil['adresse_mail_'] ?>">
             <br>
             <label for="mdp">Mot de passe </label><br>
-            <input type="password" id="mdp" name="mdp">
+            <input type="password" id="mdp" name="mdp" value="" required>
             <?php 
             if (isset($_SESSION['msg_mdp'])) {
                 $messagesMdp = $_SESSION['msg_mdp'];

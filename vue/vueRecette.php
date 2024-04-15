@@ -16,6 +16,11 @@
 
 // var_dump($_GET['id_recette']);
 // var_dump($recette); ?>
+<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
+    <div class="button-modif-recette">
+        <?php echo "<a href='./?action=modificationRecette&id_recette=" . $id_recette . "' >Modifier la recette</a>" ?>
+    </div>
+<?php } ?>
 
 <section>
     <article class="info-recette">
@@ -31,6 +36,7 @@
             </li>
         </ul>
     </article>
+
 
 
     <article class="description-recette">
@@ -51,7 +57,8 @@
         <ul>
             <p id="label">Ingrédients :</p>
             <?php foreach ($recupIngredientsRecette as $ingredient) {
-                echo "<li>" . $ingredient['nom_'] . " lip(" . $ingredient['lipides_'] . ") " . $ingredient['glucides'] . " " . $ingredient['fibres'] . " " . $ingredient['proteines'] . " " . $ingredient['calories_'] . "</li>";
+                echo "<li>" . $ingredient['nom_'] . ": lipides(" . $ingredient['lipides_'] . ") - glucides(" . $ingredient['glucides'] . ") - fibres(" . $ingredient['fibres'] . ") - proteines(" . $ingredient['proteines'] . ") - calories(" . $ingredient['calories_'] . ")</li>";
+                echo "<br>";
             }
             ?>
         </ul>
@@ -68,6 +75,7 @@
             <p id="label">Etapes :</p>
             <?php foreach ($recupEtapes as $etape) {
                 echo "<li>" . $compteur . ". " . $etape['description'] . "</li>";
+                echo "<br>";
                 $compteur++;
             }
 
@@ -79,7 +87,7 @@
         <article class="ajout-commentaire">
             <h4></h4>
             <form action="./?action=ajoutCommentaire&id_recette=<?= $_GET['id_recette'] ?>" method="POST">
-                <textarea name="contenu" id="commentaire" cols="100" rows="5"></textarea>
+                <textarea name="contenu" id="commentaire" cols="100" rows="5" required></textarea>
                 <button type="submit">
 
                     Poster
@@ -102,7 +110,9 @@
 
 
     <article class="coms">
-        <h2 class="titre-coms">Commentaires</h2>
+        <?php if (count($recupCommentaires) > 0) { ?>
+            <h2 class="titre-coms">Commentaires</h2>
+        <?php } ?>
         <div class="contenu-coms">
             <?php foreach ($recupCommentaires as $commentaire) {
                 echo "<div class=\"bloc-commentaires\">";

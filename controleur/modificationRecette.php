@@ -1,8 +1,14 @@
-<?php if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
-    die('Erreur : ' . basename(__FILE__));
-} ?>
+<?php
 
+/**
+*	Controleur secondaire : connexion 
+*/
+
+if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
+	// Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
+    die('Erreur : '.basename(__FILE__));
+}
+?>
 
 <?php
 
@@ -21,12 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
     }
 
-    $resultCreation = ajoutRecette($titre_, $difficulte, $temps, $type_de_plat_, $url_image, $description);
+    $id_recette = $_POST['id_recette'];
 
-    // var_dump($resultCreation);
+    $resultModification = modifierRecette($id_recette,$titre_, $difficulte, $temps, $type_de_plat_, $url_image, $description);
 
-    if (is_numeric($resultCreation)) {
-        $resultEtape = ajoutEtape($descriptionEtape, $resultCreation);
+    // var_dump($resultModification);
+
+    if ($resultModification == "La modification a réussie !") {
+        $resultEtape = ajoutEtape($descriptionEtape, $id_recette);
         if ($resultEtape !== "Etape ajoutée avec succès !") {
             if (!isset($_SESSION)) {
                 session_start();
@@ -38,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_ingredient = rechercheIdByNomFromIngredients($ingredients, $nomIngredient);
 
         if ($id_ingredient != false) {
-            $resultIngredientRecette = ajoutIngredientDansRecette($resultCreation, $id_ingredient);
+            $resultIngredientRecette = ajoutIngredientDansRecette($id_recette, $id_ingredient);
             if ($resultIngredientRecette !== "L'ajout a été fait !") {
                 if (!isset($_SESSION)) {
                     session_start();
@@ -46,20 +54,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['msg'] = $resultIngredientRecette;
             }
         }
-        header("Location: ./?action=recette&id_recette=" . $resultCreation);
+        header("Location: ./?action=recette&id_recette=" . $id_recette);
     } else {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION['msg'] = $resultCreation;
+        $_SESSION['msg'] = $resultModification;
     }
 }
 
 
-
-?>
-
-<?php
 
 // rechercher l'id d'un ingredient a partir de son nom 
 function rechercheIdByNomFromIngredients($ingredients, $nomIngredient)
@@ -73,9 +77,8 @@ function rechercheIdByNomFromIngredients($ingredients, $nomIngredient)
 }
 
 
+
+
+
 ?>
-
-
-
-
-<?php include './vue/vueCreationRecette.php'; ?>
+<?php include './vue/vueModificationRecette.php'; ?>

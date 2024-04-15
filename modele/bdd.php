@@ -4,7 +4,7 @@ function connexionPDO() {
 
     $login = "root";
     $mdp = "";
-    $bd = "maeflavors";
+    $bd = "maeflavors2";
     $serveur = "localhost";
 
     // connexion en distant 
