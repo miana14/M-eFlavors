@@ -3,12 +3,14 @@
 
 
 
-ajouter page 404 si jamais un random veut se connecter by ./?action=admin
-ajouter page 404 si jamais un random veut se connecter by ./?action=creationRecette
-ajouter page 404 si jamais un random veut se connecter by ./?action=etc ....
-
-
-celles qui englobent les fonctionnalités user inscrit et admin
+<div class="contenu-404">
+    <div>
+        <h1>Que faites vous ici ?!</h1>
+    </div>
+    <div>
+    <img src="assets/img/404.jpg" alt="404-image">
+    </div>
+</div>
 
 
 <?php include './vue/vueFooter.php'; ?>

@@ -19,26 +19,26 @@ function afficherRole($profil){
 
 <?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
 
-    <section class="content-admin">
+    <section>
         <table>
             <thead>
-                <tr>
-                    <th scope="col">Adresse-mail</th>
-                    <th scope="col">Login</th>
-                    <th scope="col">Rôle</th>
-                    <th scope="col">Action</th>
+                <tr class="elements-profil">
+                    <th id ="elmts-mail">Adresse-mail</th>
+                    <th id ="elmts-login">Login</th>
+                    <th id ="elmts-role">Rôle</th>
+                    <th id ="elmts-action">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="contenu-admin">
                 <?php $profils = recupProfils();
                 foreach ($profils as $profil) {
                     echo "<form method=\"post\" action=\"./?action=supprimerUtilisateur\">";
                     echo "<tr>";
-                    echo "<td>" . $profil['adresse_mail_'] . "</td>";
-                    echo "<td>" . $profil['login'] . "</td>";
-                    echo "<td>" . afficherRole($profil) . "</td>";
+                    echo "<td id='mail-vue'>" . $profil['adresse_mail_'] . "</td>";
+                    echo "<td id='login-vue'>" . $profil['login'] . "</td>";
+                    echo "<td id='role-vue'>" . afficherRole($profil) . "</td>";
                     echo "<input type='hidden' name=\"id_utilisateur\" value=\"". $profil['id_utilisateur'] ."\"></input>";
-                    echo "<td><button type='submit'><i class='fa-solid fa-trash'></i></td>";
+                    echo "<td id='action-vue'><button type='submit'><i class='fa-solid fa-trash'></i></td>";
                     echo "</form>";
                     echo "</tr>";
 

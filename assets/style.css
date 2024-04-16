@@ -995,7 +995,112 @@ footer {
   padding-top: 50px;
 }
 
-/* ===================================== MEDIA QUERIES ============================================ */
+/* ===================================== MSG ERREUR ============================================ */
 .msg-erreur {
   color: red;
+}
+
+/* ===================================== VUE ADMIN ============================================ */
+.elements-profil {
+  text-align: left;
+}
+
+#action-vue {
+  text-align: center;
+}
+
+#mail-vue,
+#login-vue,
+#role-vue {
+  text-align: left;
+}
+
+#login-vue,
+#elmts-login {
+  display: none;
+}
+
+table {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  padding: 45px;
+  color: #D9B88F;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #261201;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding: 10px !important;
+  font-size: 0.8rem;
+}
+table input[type=text],
+table input[type=password],
+table input[type=email],
+table input[type=number],
+table textarea {
+  border: 0;
+  margin: 0 0 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 10px;
+}
+table legend {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+table #niveau, table #genre {
+  padding: 5px;
+}
+table label {
+  margin: 5px;
+}
+table h2 {
+  padding-bottom: 30px;
+}
+
+.elements-profil #elmts-login,
+.elements-profil #elmts-mail,
+.elements-profil #elmts-role,
+.elements-profil #elmts-action {
+  padding-bottom: 15px;
+}
+
+@media screen and (min-width: 560px) {
+  #login-vue,
+  #elmts-login {
+    display: block;
+  }
+  table {
+    font-size: 1rem;
+    max-width: 600px;
+  }
+  #mail-vue,
+  #elmts-mail {
+    max-width: 180px;
+  }
+}
+/* ===================================== VUE 404 ============================================ */
+.contenu-404 {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+  margin-top: 20px;
+  padding: 30px;
+}
+
+.contenu-404 img {
+  width: 100%;
+  padding-top: 30px;
+}
+
+@media screen and (min-width: 580px) {
+  .contenu-404 img {
+    max-width: 500px;
+  }
 }/*# sourceMappingURL=style.css.map */
