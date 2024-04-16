@@ -87,7 +87,7 @@
         <article class="ajout-commentaire">
             <h4></h4>
             <form action="./?action=ajoutCommentaire&id_recette=<?= $_GET['id_recette'] ?>" method="POST">
-                <textarea name="contenu" id="commentaire" cols="100" rows="5" required></textarea>
+                <textarea name="contenu" id="commentaire" cols="100" rows="5" placeholder="Laissez votre commentaire !" required></textarea>
                 <button type="submit">
 
                     Poster

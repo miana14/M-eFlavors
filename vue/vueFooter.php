@@ -1,5 +1,5 @@
 <footer>
-    <article id="reseaux">
+    <div id="reseaux">
         <ul>
 
             <li><a href="www.facebook.com"><i class="fa-brands fa-facebook"></i></a></li>
@@ -14,18 +14,18 @@
 
 
         </ul>
-    </article>
-    <article id="politiques">
+    </div>
+    <div id="politiques">
         <ul>
             <li><a href="./?action=mentions">Mentions Légales</a> - <a href="./?action=politiques">Politique de
                     confidentialité</a></li>
         </ul>
-    </article>
-    <article id="copyright">
+    </div>
+    <div id="copyright">
         <ul>
             <li>MãeFlavors - 2024 © Tous droits réservés</li>
         </ul>
-    </article>
+    </div>
 </footer>
 </body>
 
