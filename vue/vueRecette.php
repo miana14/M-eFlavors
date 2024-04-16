@@ -11,11 +11,8 @@
 <?php require_once './modele/mdl_recettes.php'; ?>
 
 <?php $id_recette = $_GET['id_recette']; ?>
-<?php $recette = recupRecette($id_recette);
+<?php $recette = recupRecette($id_recette);?>
 
-
-// var_dump($_GET['id_recette']);
-// var_dump($recette); ?>
 <?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
     <div class="button-modif-recette">
         <?php echo "<a href='./?action=modificationRecette&id_recette=" . $id_recette . "' >Modifier la recette</a>" ?>
@@ -49,7 +46,7 @@
         </div>
     </article>
 
-    <!--  ingredients   -->
+    <?php //ingredients ?>
 
     <?php $recupIngredientsRecette = recupIngredientsRecette($_GET['id_recette']); ?>
 
@@ -64,7 +61,7 @@
         </ul>
     </article>
 
-    <!--  etapes   -->
+    <?php //etapes ?>
 
     <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>
     <?php $compteur = 1; ?>
@@ -94,10 +91,6 @@
 
                 </button>
             </form>
-            <?php // recup du login user correspondant à l'id_recette   ?>
-            <p>
-                <?php // recup du commentaire correpondant a l'id_utilisateur en lien avec l'id_recette  ?>
-            </p>
 
         <?php } else { ?>
             <div id="bloc-else-connexion">

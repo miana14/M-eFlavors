@@ -50,7 +50,7 @@
         </ul>
     </nav>
     <div id="banniere"></div>
-    <!-- Breadcrumb Trail -->
+    <?php  // Fil d'ariane ?>
     <?php $action = isset($_GET['action']) ? $_GET['action'] : ''; ?>
     <ul class="breadcrumb">
         <li><a href="./?action=accueil">Accueil</a></li>

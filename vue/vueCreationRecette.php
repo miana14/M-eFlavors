@@ -55,7 +55,6 @@
                 <br>
                 <label for="ingredient">Ingrédients</label><br>
                 <input type="text" id="ingredients" name="ingredient" required>
-                <!-- for each pour chaque ingredient sous forme de liste -->
                 <br>
                 <label for="etape">Etapes</label><br>
                 <textarea id="etape" name="etape" required></textarea>

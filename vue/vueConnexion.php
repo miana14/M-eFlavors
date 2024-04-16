@@ -1,7 +1,6 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
-<!-- <div id="banniereCI"> -->
     <article class="form-card">
         <h2>Connexion</h2>
         <?php require './vue/vueMessageErreur.php'?>
