@@ -7,17 +7,17 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 function connexionPDO() {
     // connexion en local 
 
-    $login = "root";
-    $mdp = "";
-    $bd = "maeflavors2";
-    $serveur = "localhost";
+    // $login = "root";
+    // $mdp = "";
+    // $bd = "maeflavors2";
+    // $serveur = "localhost";
 
     // connexion en distant 
 
-    // $login = "gretaxao_loureiroma";
-    // $mdp = "LoureiroMa2023!";
-    // $bd = "gretaxao_loureiroma";
-    // $serveur = "www.greta-bretagne-sud.fr";
+    $login = "gretaxao_loureiroma";
+    $mdp = "LoureiroMa2023!";
+    $bd = "gretaxao_loureiroma";
+    $serveur = "www.greta-bretagne-sud.fr";
    
 
     try {
