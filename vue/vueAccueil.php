@@ -2,6 +2,7 @@
 <?php include './vue/vueHeader.php'; ?>
 
 <article>
+  <h2 id="sliderTitre">Slider</h2>
   <div class="slider-container">
     <ul class="slider">
       <li class="slider__item"><img src="assets/img/bolinho.jpg" alt="bolinho de bacalhau"></li>
@@ -15,5 +16,11 @@
   </div>
 </article>
 
+<article class="video">
+  <h2>Video Recette Francesinha</h2>
+  <video controls="controls" id="videoFrancesinha">
+    <source src="assets/video/francesinha.mp4" type="video/mp4">
+  </video>
+</article>
 
 <?php include './vue/vueFooter.php'; ?>
