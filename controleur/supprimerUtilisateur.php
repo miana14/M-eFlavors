@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
+    
     die('Erreur : ' . basename(__FILE__));
 }
 
@@ -16,13 +16,12 @@ if (!isset($_SESSION)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_utilisateur = $_POST['id_utilisateur'];
+    $id_utilisateur = $_POST['id_utilisateur']; // on recupere l'id de l'utilisateur
 
-    $supprimer = supprimerUtilisateur($id_utilisateur);
+    $supprimer = supprimerUtilisateur($id_utilisateur); 
 
-    var_dump($supprimer);
     
-    if ($supprimer == "Utilisateur " . $id_utilisateur . " a été supprimé.") {
+    if ($supprimer == "Utilisateur " . $id_utilisateur . " a été supprimé.") { // on verifie si ça revoie le bon return de la fonction supprimerUtilisateur
         header("Location: ./?action=admin");
     } else {
         $_SESSION['msg'] = $supprimer;

@@ -22,7 +22,7 @@ function connexionUser($email, $mdp)
             $mot_de_passe_hache = $row['mdp_'];
 
 
-            if (password_verify($mdp, $mot_de_passe_hache)) {
+            if (password_verify($mdp, $mot_de_passe_hache)) { // on verifie le mdp autrefois haché
 
                 return $row;
 

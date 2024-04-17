@@ -8,7 +8,7 @@
 
 <?php require_once './modele/mdl_profil.php'; ?>
 
-<?php $id_utilisateur = $_SESSION['id_utilisateur']; ?>
+<?php $id_utilisateur = $_SESSION['id_utilisateur']; // recuperation du id de l'utilisateur via la SESSION ?>
 
 <?php $profil = recupProfil($id_utilisateur); ?>
 
@@ -17,6 +17,8 @@
         <h2>Modification de mon Profil</h2>
         <form action="./?action=profil" method="POST" class="form">
             <?php require './vue/vueMessageErreur.php'?>
+            <?php /* les echo gardent en memoire les données saisies lors de l'inscription d'un utilisateur 
+            et les affichent par la suite lorsqu'on souhaite modifier le profil */?> 
             <fieldset>
                 <legend>Genre</legend>
 

@@ -6,7 +6,7 @@
             <li><a href="www.instagram.com "><i class="fa-brands fa-instagram"></i></a></li>
             <li><a href="www.x.com"><i class="fa-brands fa-x-twitter"></i></a></li>
             <li><a href="www.github.com"><i class="fa-brands fa-github"></i></a></li>
-            <?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
+            <?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) {?>
                 <ul id="admin">
                     <li><a href="./?action=admin"><i class="fa-solid fa-lock"></i></a></li>
                 </ul>

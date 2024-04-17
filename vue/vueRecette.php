@@ -11,13 +11,16 @@
 <?php require_once './modele/mdl_recettes.php'; ?>
 
 <?php $id_recette = $_GET['id_recette']; ?>
-<?php $recette = recupRecette($id_recette);?>
+<?php $recette = recupRecette($id_recette); ?>
 
-<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
+<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { //verification si l'utilisateur est admin pour pouvoir afficher le bouton pour pouvoir modifier la recette ?>
     <div class="button-modif-recette">
         <?php echo "<a href='./?action=modificationRecette&id_recette=" . $id_recette . "' >Modifier la recette</a>" ?>
     </div>
 <?php } ?>
+
+<?php //recuperation de tous les elemments comme le titre, tesmp, difficulte de la recette pour les afficher ?>
+
 
 <section>
     <article class="info-recette">
@@ -50,6 +53,8 @@
 
     <?php $recupIngredientsRecette = recupIngredientsRecette($_GET['id_recette']); ?>
 
+    <?php //foreach pour recup les ingredients saisis lors de la creation de recettes ?>
+
     <article class="ingredients">
         <ul>
             <p id="label">Ingrédients :</p>
@@ -66,6 +71,8 @@
     <?php $recupEtapes = recupEtapes($_GET['id_recette']); ?>
     <?php $compteur = 1; ?>
 
+    <?php //foreach pour recup les etapes saisis lors de la creation de recettes ?>
+
 
     <article class="etapes">
         <ul>
@@ -80,11 +87,12 @@
         </ul>
     </article>
 
-    <?php if (isset($_SESSION['email_user'])) { ?>
+    <?php if (isset($_SESSION['email_user'])) {  // on verifier que il ya bien un utilisateur de connecté pour qu'il puisse ajouter un commentaire?>
         <article class="ajout-commentaire">
             <h4></h4>
             <form action="./?action=ajoutCommentaire&id_recette=<?= $_GET['id_recette'] ?>" method="POST">
-                <textarea name="contenu" id="commentaire" cols="100" rows="5" placeholder="Laissez votre commentaire !" required></textarea>
+                <textarea name="contenu" id="commentaire" cols="100" rows="5" placeholder="Laissez votre commentaire !"
+                    required></textarea>
                 <button type="submit">
 
                     Poster
@@ -92,22 +100,22 @@
                 </button>
             </form>
 
-        <?php } else { ?>
+        <?php } else { // sinon le user pas connecté aura cet affichage ?>
             <div id="bloc-else-connexion">
                 <h3>Veuillez vous connecter pour ajouter un commentaire !</h3>
             </div>
         </article>
     <?php } ?>
 
-    <?php $recupCommentaires = recupCommentaires($_GET['id_recette']); ?>
+    <?php $recupCommentaires = recupCommentaires($_GET['id_recette']); // on recupere les commentaires en fonction de l'id de la recette?>
 
 
     <article class="coms">
-        <?php if (count($recupCommentaires) > 0) { ?>
+        <?php if (count($recupCommentaires) > 0) {   // s'il ya des commentaires on affiche ?>
             <h2 class="titre-coms">Commentaires</h2>
         <?php } ?>
         <div class="contenu-coms">
-            <?php foreach ($recupCommentaires as $commentaire) {
+            <?php foreach ($recupCommentaires as $commentaire) {            // recuperation grace a un foreach le login et le contenu du commentaire saisi
                 echo "<div class=\"bloc-commentaires\">";
                 echo "<h3 class=\"auteur-commentaire\"> Auteur : " . $commentaire['login'] . "</h3>";
                 echo "<p class=\"texte-commentaire\">" . $commentaire['contenu'] . "</p>";

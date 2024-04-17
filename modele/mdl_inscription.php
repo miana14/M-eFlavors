@@ -1,7 +1,7 @@
 <?php
 require_once "bdd.php";
 
-function verifierDonnees($email, $mdp)
+function verifierDonnees($email, $mdp) // fonction pour verifier le mail et le mdp pour établir une sécurité plus robuste
 {
     $erreurs = [];
     // Vérifier l'email
@@ -28,22 +28,21 @@ function verifierDonnees($email, $mdp)
 function inscriptionUser($email, $login, $mdp)
 {
     try {
-        $mdp_hache = password_hash($mdp, PASSWORD_DEFAULT);
+        $mdp_hache = password_hash($mdp, PASSWORD_DEFAULT); // hachage du mdp
         $conn = connexionPDO();
 
-        $sql = "INSERT INTO utilisateurs (adresse_mail_,login ,mdp_)
-                VALUES (:email,:login,:mdp)";
+        $sql = "INSERT INTO utilisateurs (adresse_mail_,login ,mdp_)  VALUES (:email,:login,:mdp)"; // insertion du mail, login et du mdp dans la table utilisateurs de la BDD
 
-        $email = htmlspecialchars($email);
+        $email = htmlspecialchars($email);  // convertion des caractères spéciaux en entites html
         $login = htmlspecialchars($login);
 
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':email', $email); // lie les parametres et evite les injections sql en séparant les données de la requete
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':mdp', $mdp_hache);
 
         if ($stmt->execute()) {
-            return $conn->lastInsertId();
+            return $conn->lastInsertId();  // insertion d'un id pour l'utilisateur
         } else {
             return "Erreur(1) de connexion à la base de données, veuillez contacter le service client";
         }

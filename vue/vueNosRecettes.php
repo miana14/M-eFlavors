@@ -13,6 +13,8 @@
         <?php
         $recettes = recupRecettes();
         
+                // on va echo via un foreach toutes les recettes présentes dans la BDD et les disposer en forme de card
+
         foreach ($recettes as $recette) {
                 echo "<article class=\"card\">";
                 echo "<div class=\"card-recette\">";

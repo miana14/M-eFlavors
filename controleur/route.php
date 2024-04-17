@@ -5,7 +5,7 @@ $action = "default";
 function routage($action)
 {
 
-    switch ($action) {
+    switch ($action) {  //redirection via le nom de l'action
         case "admin":
             $fichier = "admin.php";
             break;

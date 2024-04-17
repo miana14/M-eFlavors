@@ -71,9 +71,16 @@ function ajoutRecette($titre_, $difficulte, $temps, $type_de_plat_, $url_image, 
         $conn = connexionPDO();
 
 
-        
+
         $sqlAjout = "INSERT INTO fiche_recette (titre_, difficulte, temps, type_de_plat_, url_image, description )
                 VALUES (:titre_, :difficulte, :temps, :type_de_plat_, :url_image, :description)";
+
+        $titre_ = htmlspecialchars($titre_);
+        $difficulte = htmlspecialchars($difficulte);
+        $temps = htmlspecialchars($temps);
+        $type_de_plat_ = htmlspecialchars($type_de_plat_);
+        $url_image = htmlspecialchars($url_image);
+        $description = htmlspecialchars($description);
 
         $stmtAjout = $conn->prepare($sqlAjout);
 
@@ -108,8 +115,15 @@ function modifierRecette($id_recette, $titre_, $difficulte, $temps, $type_de_pla
         $conn = connexionPDO();
 
 
-        
+
         $sqlModif = "UPDATE fiche_recette SET titre_ = :titre_, difficulte = :difficulte, temps = :temps, type_de_plat_ = :type_de_plat_, url_image = :url_image, description = :description WHERE id_recette = :id_recette";
+
+        $titre_ = htmlspecialchars($titre_);
+        $difficulte = htmlspecialchars($difficulte);
+        $temps = htmlspecialchars($temps);
+        $type_de_plat_ = htmlspecialchars($type_de_plat_);
+        $url_image = htmlspecialchars($url_image);
+        $description = htmlspecialchars($description);
 
         $stmtModif = $conn->prepare($sqlModif);
 
@@ -173,7 +187,9 @@ function ajoutIngredientDansRecette($id_recette, $id_ingredient)
 
     try {
         $conn = connexionPDO();
+
         $sql = "INSERT INTO composer (id_recette, id_ingredient) VALUES (:id_recette,:id_ingredient)";
+
         $stmtAjoutIngredientRecette = $conn->prepare($sql);
 
         $stmtAjoutIngredientRecette->bindParam(":id_recette", $id_recette);
@@ -240,7 +256,7 @@ function recupEtapes($id_recette)
         $stmt->bindParam(':id_recette', $id_recette);
 
         if ($stmt->execute()) {
-            $etapes = $stmt->fetchAll();
+            $etapes = $stmt->fetchAll(); // renvoie de toutes les données via un tableau
             return $etapes;
         } else {
             return "Erreur : " . $sql . "<br>" . $stmt->errorInfo()[2];
@@ -264,7 +280,9 @@ function ajoutEtape($description, $id_recette)
 
         //2-Sauvegarde du commentaire en base de données 
         $sqlAjout = "INSERT INTO etapes (description, id_recette) VALUES (:description, :id_recette)";
-       
+
+        $description = htmlspecialchars($description);
+
         $stmtAjout = $conn->prepare($sqlAjout);
 
         $stmtAjout->bindParam(':description', $description);
@@ -318,7 +336,7 @@ function ajoutCommentaire($contenu, $id_recette, $adresse_mail_auteur)
 {
 
     try {
-       
+
         $conn = connexionPDO();
 
         $sqlUtilisateur = "SELECT id_utilisateur FROM utilisateurs WHERE adresse_mail_ = :adresse_mail_auteur";
@@ -341,8 +359,10 @@ function ajoutCommentaire($contenu, $id_recette, $adresse_mail_auteur)
 
         // Sauvegarde du commentaire en base de données
 
-        $sqlAjout = "INSERT INTO commentaires (contenu, id_recette, id_utilisateur )
-                VALUES (:contenu, :id_recette, :id_utilisateur) ";
+        $sqlAjout = "INSERT INTO commentaires (contenu, id_recette, id_utilisateur ) VALUES (:contenu, :id_recette, :id_utilisateur) ";
+
+        $contenu = htmlspecialchars($contenu);
+
         $stmtAjout = $conn->prepare($sqlAjout);
 
         $stmtAjout->bindParam(':contenu', $contenu);

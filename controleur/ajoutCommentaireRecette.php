@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
+    
     die('Erreur : ' . basename(__FILE__));
 }
 
@@ -13,8 +13,7 @@ require_once './modele/mdl_recettes.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contenu = $_POST['contenu'];
-    $id_recette = $_GET['id_recette'];
-
+    $id_recette = $_GET['id_recette']; // récupération via l'URL le id de la recette
   
     
     if (!isset($_SESSION)) {
@@ -30,13 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($resultCommentaire == "Commentaire ajouté avec succès !") {
         header("Location: ./?action=recette&id_recette=" .$id_recette ."&resultat_com=". $resultCommentaire);
-        
+        // ajout dans l'url l'id de la recette + le resultat du commentaire si ça marche
     }
 
 } else {
     $_SESSION['msg'] = $resultCommentaire;
 }
-
+// renvoie sous forme de message l'erreur
 
 
 ?>

@@ -19,6 +19,8 @@
             j'en ai eu à les partager avec vous. Bon appétit et bonne découverte !</p>
     </div>
 </article>
+
+<?php // affichage du bouton et du contenu correspondant a l'api externe ?>
 <div class="btn-api">
     <button onclick="afficherDonnees()">Plus d'informations sur la région</button>
 </div>

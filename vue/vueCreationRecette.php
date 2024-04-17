@@ -1,7 +1,7 @@
 <?php include './vue/vueHead.php'; ?>
 <?php include './vue/vueHeader.php'; ?>
 
-<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
+<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { // verifie si l'utilisateur est admin, alors on affiche?>
 
     <section>
 
@@ -66,7 +66,7 @@
             </form>
         </article>
     </section>
-<?php } else {
+<?php } else { // sinon on le renvoie a la page 404
     header("Location: ./?action=404");
 } ?>
 

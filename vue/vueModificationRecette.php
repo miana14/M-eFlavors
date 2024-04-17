@@ -5,9 +5,12 @@
 
 <?php $id_recette = $_GET['id_recette']; ?>
 
-<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
+<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { // on verifie que l'utilisateur est un admin?>
 
-<?php $recette = recupRecette($id_recette) ?>
+<?php $recette = recupRecette($id_recette)  // recuperation de l'id_recette
+
+// les echo gardent en memoire les données saisies lors de la creation de recette et les affichent par la suite lorsqu'on souhaite la modifier
+?>
 
     <section>
 
@@ -16,7 +19,7 @@
             <h2>Modification de Recette</h2>
             <form action="./?action=modificationRecette" method="POST" class="form">
 
-                <input type='hidden' name="id_recette" value="<?php echo $id_recette ?>"></input>
+                <input type='hidden' name="id_recette" value="<?php echo $id_recette // on recupere le POST de l'id recette via un input cache?>"></input>
 
                 <label for="titre">Titre</label><br>
                 <input type="text" id="titre" name="titre" required value="<?php echo $recette['titre_']?>">
@@ -74,6 +77,6 @@
             </form>
         </article>
     </section>
-<?php } else {
+<?php } else { // sinon on le redirige vers la page 404
     header("Location: ./?action=404");
 } ?>

@@ -1,11 +1,7 @@
 <?php
 
-/**
-*	Controleur secondaire : connexion 
-*/
-
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-	// Un MVC utilise uniquement ses requêtes depuis le contrôleur principal : index.php
+
     die('Erreur : '.basename(__FILE__));
 }
 ?>
@@ -17,7 +13,7 @@ require_once './modele/mdl_recettes.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titre_ = $_POST['titre'];
     $difficulte = $_POST['difficulte'];
-    $temps = $_POST['temps'];
+    $temps = $_POST['temps'];                       // recuperation des POST
     $type_de_plat_ = $_POST['type_de_plat'];
     $description = $_POST['description'];
     $url_image = $_POST['url_image'];
@@ -31,11 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $resultModification = modifierRecette($id_recette,$titre_, $difficulte, $temps, $type_de_plat_, $url_image, $description);
 
-    // var_dump($resultModification);
 
-    if ($resultModification == "La modification a réussie !") {
-        $resultEtape = ajoutEtape($descriptionEtape, $id_recette);
-        if ($resultEtape !== "Etape ajoutée avec succès !") {
+    if ($resultModification == "La modification a réussie !") {         // on verifie si la fonction renvoie la phrase correcte 
+        $resultEtape = ajoutEtape($descriptionEtape, $id_recette);      // on ajout par la suite une autre etape
+        if ($resultEtape !== "Etape ajoutée avec succès !") {           // on verifie si la fonction renvoie la phrase correcte 
             if (!isset($_SESSION)) {
                 session_start();
             }
@@ -46,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_ingredient = rechercheIdByNomFromIngredients($ingredients, $nomIngredient);
 
         if ($id_ingredient != false) {
-            $resultIngredientRecette = ajoutIngredientDansRecette($id_recette, $id_ingredient);
+            $resultIngredientRecette = ajoutIngredientDansRecette($id_recette, $id_ingredient); // meme manipulation que pour l'ajout de l'etape
             if ($resultIngredientRecette !== "L'ajout a été fait !") {
                 if (!isset($_SESSION)) {
                     session_start();
@@ -54,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['msg'] = $resultIngredientRecette;
             }
         }
-        header("Location: ./?action=recette&id_recette=" . $id_recette);
+        header("Location: ./?action=recette&id_recette=" . $id_recette);        // on redirige vers la page avec le bon id recette
     } else {
         if (!isset($_SESSION)) {
             session_start();

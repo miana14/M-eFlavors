@@ -1,4 +1,9 @@
 <?php
+
+if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
+    
+    header('Content-Type:text/plain');
+}
 function connexionPDO() {
     // connexion en local 
 
@@ -16,7 +21,7 @@ function connexionPDO() {
    
 
     try {
-        $conn = new PDO("mysql:host=$serveur;dbname=$bd", $login, $mdp, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
+        $conn = new PDO("mysql:host=$serveur;dbname=$bd", $login, $mdp, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); // connexion a la BDD
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch (PDOException $e){
@@ -25,9 +30,6 @@ function connexionPDO() {
     }
 }
 
-if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // prog de test
-    header('Content-Type:text/plain');
-}
+
 
 ?>

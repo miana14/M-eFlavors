@@ -5,7 +5,7 @@
 
 <?php 
 
-function afficherRole($profil){
+function afficherRole($profil){ // return le role de l'utilisateur 
     if($profil['is_Admin'] == 0){
         return "Utilisateur";
     }else{
@@ -17,7 +17,7 @@ function afficherRole($profil){
 ?>
 
 
-<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) { ?>
+<?php if (isset($_SESSION['is_Admin']) && $_SESSION['is_Admin'] == 1) {  //verifie si l'utilisateur est admin, alors on affiche ... ?>
 
     <section>
         <table>
@@ -47,7 +47,7 @@ function afficherRole($profil){
         </table>
 
     </section>
-<?php } else {
+<?php } else { // sinon on le renvoie a la page 404
     header("Location: ./?action=404");
 } ?>
 
