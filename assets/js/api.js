@@ -30,36 +30,54 @@ function afficherDonnees() {
                 //Rajoute l'ID data-region a la div
                 infosRegion.id = 'data-region';
 
-                //Crée un paragraphe avec les donnée data.culture
-                const titreInfosRegion = document.createElement('h2');
-                titreInfosRegion.textContent = "Culture";
-                //Rajoute le paragraphe a la div infosRegion
-                infosRegion.appendChild(titreInfosRegion);
+                // TITRE
+                const divInfosRegionCulture = document.createElement('div');
+                divInfosRegionCulture.classList.add('div-culture');
+                infosRegion.appendChild(divInfosRegionCulture);
+                const titreInfosRegionCulture = document.createElement('h2');
+                titreInfosRegionCulture.textContent = "Culture";
+                divInfosRegionCulture.appendChild(titreInfosRegionCulture);
 
                 //Crée un paragraphe avec les donnée data.culture
                 const infoCulture = document.createElement('p');
                 infoCulture.textContent = data.culture;
                 //Rajoute le paragraphe a la div infosRegion
-                infosRegion.appendChild(infoCulture);
+                divInfosRegionCulture.appendChild(infoCulture);
+
+                // TITRE
+                const divInfosRegionHistoire = document.createElement('div');
+                divInfosRegionHistoire.classList.add('div-histoire');
+                infosRegion.appendChild(divInfosRegionHistoire);
+                const titreInfosRegionHistoire = document.createElement('h2');
+                titreInfosRegionHistoire.textContent = "Histoire";
+                divInfosRegionHistoire.appendChild(titreInfosRegionHistoire);
 
                 //Crée un paragraphe avec les donnée data.story
                 const infostory = document.createElement('p');
                 infostory.textContent = data.story;
                 //Rajoute le paragraphe a la div infosRegion
-                infosRegion.appendChild(infostory);
+                divInfosRegionHistoire.appendChild(infostory);
+
+                // TITRE 
+                const divInfosRegionFetes = document.createElement('div');
+                divInfosRegionFetes.classList.add('div-fetes');
+                infosRegion.appendChild(divInfosRegionFetes);
+                const titreInfosRegionFetes = document.createElement('h2');
+                titreInfosRegionFetes.textContent = "Fêtes Traditionnelles";
+                divInfosRegionFetes.appendChild(titreInfosRegionFetes);
 
                 //Crée un paragraphe avec les donnée data.traditionalFestivals
-                const infotraditionalFestivals = document.createElement('p');
-                infotraditionalFestivals.textContent = data.culture;
+                const infoTraditionalFestivals = document.createElement('p');
+                infoTraditionalFestivals.textContent = data.traditionalFestivals;
                 //Rajoute le paragraphe a la div infosRegion
-                infosRegion.appendChild(infotraditionalFestivals);
+                divInfosRegionFetes.appendChild(infoTraditionalFestivals);
 
-                let contenuCulture = document.getElementById('block-culture');
+                let contenuCulture = document.getElementById('block-infos');
                 contenuCulture.appendChild(infosRegion);
 
             } else {
                 // Gérer les erreurs si les données ne sont pas complètes
-                console.error('Les données du profil sont incomplètes.');
+                console.error('La récupération a échouée');
             }
         })
         .catch(error => {
@@ -67,10 +85,10 @@ function afficherDonnees() {
             console.error('Erreur lors de la récupération des données :', error);
         });
     }else {
-        if(infosRegionDiv.style.display == "block"){
-            infosRegionDiv.style.display = "none";
-        }else {
+        if(infosRegionDiv.style.display == "none"){
             infosRegionDiv.style.display = "block";
+        }else {
+            infosRegionDiv.style.display = "none";
         }
     }
 }

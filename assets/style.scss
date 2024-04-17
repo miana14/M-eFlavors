@@ -227,10 +227,11 @@ nav {
         margin-bottom: 1rem; 
     }
     .card-lien{
-        @include button-style($primary-color);
+        @include button-style;
         padding: 10px !important;
         margin-left: 10px ;
-        margin-bottom: 10px ;
+        margin-bottom: 10px;
+        background-color: $third-color;
         
     }
   }
@@ -444,6 +445,7 @@ nav {
     border: solid 2px $third-color;
     min-width: 150px;
     left: 0;
+    z-index: 3;
   }
   #menu-user.overlay{
     visibility: visible;
@@ -455,6 +457,7 @@ nav {
     border: solid 2px $third-color;
     min-width: 150px;
     right: 0;
+    z-index: 3;
   }
   
   #menu-burger li,
@@ -718,6 +721,10 @@ nav {
     width: 100%;
 }
 
+.btn-api{
+    text-align: center;
+}
+
 @media screen and (min-width: 950px){
     .presentation{
         flex-direction: row;
@@ -726,6 +733,33 @@ nav {
         width: 50%;
     }
 }
+.btn-api button{
+    @include button-style;
+    max-width: 300px !important;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.div-culture,
+.div-histoire,
+.div-fetes{
+    @include card-style;
+    width: auto;
+    margin: 20px;
+}
+.div-culture p,
+.div-histoire p,
+.div-fetes p{
+    color: $primary-color;
+}
+.div-culture h2,
+.div-histoire h2,
+.div-fetes h2{
+    text-align: center;
+    color: #FFE7B0;
+    margin-bottom: 30px;
+}
+
 
 /* ===================================================== FORUM ===============================================================*/
 
@@ -735,26 +769,14 @@ nav {
     margin-top: 60px;
 }
 .forum .texte-forum {
-    @include button-style($primary-color, $third-color);
+    @include button-style;
     text-align: center;
     padding-bottom: 100px;
     padding-top: 100px;
     font-size: 2rem;
+    cursor: auto;
 }
 
-
-/* ===================================================== ADMIN ===============================================================*/
-.content-admin {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-@media screen and (min-width: 950px){
-    .content-admin{
-        flex-direction: row;
-    }
-}
 
 /* ===================================================== FOOTER ===============================================================*/
 footer {
