@@ -264,6 +264,7 @@ nav {
 .info-recette ul li{
     @include button-style;
     text-align: center;
+    cursor: auto;
 }
 
 .description-recette{
@@ -451,7 +452,7 @@ nav {
   #menu-user.overlay{
     visibility: visible;
     opacity: 1;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     padding-top: 0px;
     background: #324001;
     margin-top: 150px;
@@ -689,8 +690,11 @@ nav {
     margin: 0 auto;
     padding-top: 60px;
     padding-bottom: 40px;
-    max-width: 800px;
+    width: 80%;
     
+}
+video source{
+    width: auto;
 }
 
 /* ==================================== MENTIONS / POLITIQUES ============================================ */
@@ -788,7 +792,6 @@ nav {
     color: #FFE7B0;
     margin-bottom: 30px;
 }
-
 
 /* ===================================================== FORUM ===============================================================*/
 
