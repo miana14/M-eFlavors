@@ -14,7 +14,6 @@ function connexionUser($email, $mdp)
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':mdp_', $mdp);
         $stmt->execute();
 
         // Vérifiez si l'utilisateur existe dans la base de données
